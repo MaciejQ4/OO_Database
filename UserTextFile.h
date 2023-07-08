@@ -1,7 +1,10 @@
-
+//#pragma once
+#ifndef USERTEXTFILE_H
+#define USERTEXTFILE_H
 
 #include "User.h"
-#include "Database.h"
+#include "AuxillaryFuntions.h"
+
 
 #include <iostream>
 #include <stdlib.h>
@@ -16,16 +19,17 @@
 #include <algorithm>
 using namespace std;
 
-void Database::createUser(){
+class UserTextFile
+{
+	string userFileName = "users.txt";
+	fstream userFile;
 
-	userManager.createUser();
-}
+	bool isUserFileEmpty();
 
-void Database::showAllUsers(){
+public:
 
-	userManager.showAllUsers();
+	void appendUserToFile(User user);
 
-}
+};
 
-
-
+#endif

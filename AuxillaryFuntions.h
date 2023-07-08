@@ -1,7 +1,7 @@
+#pragma once
 
-
-#include "User.h"
-#include "Database.h"
+#ifndef AUXILLARYFUNCTIONS_H
+#define AUXILLARYFUNCTIONS_H
 
 #include <iostream>
 #include <stdlib.h>
@@ -16,16 +16,8 @@
 #include <algorithm>
 using namespace std;
 
-void Database::createUser(){
+class AuxillaryFuntions
+{
+};
 
-	userManager.createUser();
-}
-
-void Database::showAllUsers(){
-
-	userManager.showAllUsers();
-
-}
-
-
-
+#endif
