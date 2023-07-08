@@ -34,6 +34,7 @@ class UserManager
 public:
 	void createUser();
 	void showAllUsers();
+	void uploadUsersFromTextFile();
 };
 
 #endif

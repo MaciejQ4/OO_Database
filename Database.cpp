@@ -16,6 +16,11 @@
 #include <algorithm>
 using namespace std;
 
+Database::Database() {
+	
+	userManager.uploadUsersFromTextFile();
+}
+
 void Database::createUser(){
 
 	userManager.createUser();

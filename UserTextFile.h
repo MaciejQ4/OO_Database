@@ -29,6 +29,7 @@ class UserTextFile
 public:
 
 	void appendUserToFile(User user);
+	void uploadUsersFromTextFile(vector<User>& users);
 
 };
 

@@ -26,7 +26,7 @@ class Database
 	UserManager userManager;
 
 public:
-
+	Database();
 	void createUser();
 	void showAllUsers();
 

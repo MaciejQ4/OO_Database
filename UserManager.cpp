@@ -56,3 +56,9 @@ void UserManager::showAllUsers() {
         cout << users[i].getUserPassword() << endl;
     }
 }
+
+void UserManager::uploadUsersFromTextFile() {
+
+    userTextFile.uploadUsersFromTextFile(users);
+
+}

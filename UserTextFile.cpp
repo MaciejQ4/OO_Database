@@ -36,3 +36,39 @@ void UserTextFile::appendUserToFile(User user) {
     }
     else cout << "failed";
 }
+
+void UserTextFile::uploadUsersFromTextFile(vector<User> &users) {
+
+ 
+    userFile.open(userFileName, ios::in | ios::app);
+
+    if (!userFile.good()) {
+        cout << "failed"; exit(0);
+    }
+
+    string line;
+    while (getline(userFile, line)) {
+
+        string str = line;
+        string parts[3];
+
+        stringstream ss(str);
+
+        int i = 0;
+        while (ss.good() && i < 3) {
+            string substr;
+            getline(ss, substr, '|');
+            parts[i] = substr;
+            i++;
+        }
+        i = 0;
+
+        User user;
+        user.setUserID(atoi(parts[0].c_str()));
+        user.setUserLogin(parts[1]);
+        user.setUserPassword(parts[2]);
+
+        users.push_back(user);
+    }
+    userFile.close();
+}
