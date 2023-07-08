@@ -23,6 +23,7 @@ int main()
     cout << "Hello World!\n";
 
     Database database;
+    database.showAllUsers();
     database.createUser();
     database.createUser();
     database.showAllUsers();
