@@ -59,6 +59,6 @@ void UserManager::showAllUsers() {
 
 void UserManager::uploadUsersFromTextFile() {
 
-    userTextFile.uploadUsersFromTextFile(users);
+    users = userTextFile.uploadUsersFromTextFile();
 
 }

@@ -37,9 +37,9 @@ void UserTextFile::appendUserToFile(User user) {
     else cout << "failed";
 }
 
-void UserTextFile::uploadUsersFromTextFile(vector<User> &users) {
+vector<User> UserTextFile::uploadUsersFromTextFile() {
 
- 
+    vector<User> users;
     userFile.open(userFileName, ios::in | ios::app);
 
     if (!userFile.good()) {
@@ -71,4 +71,5 @@ void UserTextFile::uploadUsersFromTextFile(vector<User> &users) {
         users.push_back(user);
     }
     userFile.close();
+    return users;
 }
