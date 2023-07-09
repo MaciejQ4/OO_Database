@@ -20,13 +20,23 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
-
     Database database;
-    database.showAllUsers();
-    database.createUser();
-    database.createUser();
-    database.showAllUsers();
+
+    while (true) {
+        system("cls");
+        cout << "Main menu\n";
+        cout << "1. Create new user \n";
+        cout << "2. Login \n";
+        cout << "3. Show all users \n";
+        char choice;
+        cin >> choice;
+
+        switch (choice) {
+        case '1': database.createUser(); break;
+        case '2': database.loginUser(); break;
+        case '3': database.showAllUsers(); break;
+        }
+    }
 
 }
 
