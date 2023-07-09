@@ -1,11 +1,4 @@
 #pragma once
-
-#ifndef DATABASE_H
-#define DATABASE_H
-
-#include "User.h"
-#include "UserManager.h"
-
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -19,19 +12,7 @@
 #include <algorithm>
 using namespace std;
 
-//class User;
-
-class Database
+class ContactManager
 {
-	UserManager userManager;
-
-public:
-	Database();
-	void createUser();
-	void showAllUsers();
-	int loginUser();
-
-
 };
 
-#endif

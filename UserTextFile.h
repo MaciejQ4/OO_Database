@@ -21,7 +21,7 @@ using namespace std;
 
 class UserTextFile
 {
-	string userFileName = "users.txt";
+	const string userFileName = "users.txt";
 	fstream userFile;
 
 	bool isUserFileEmpty();

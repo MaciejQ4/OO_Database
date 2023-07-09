@@ -32,5 +32,11 @@ void Database::showAllUsers(){
 
 }
 
+int Database::loginUser() {
+
+	return userManager.loginUser();
+	
+}
+
 
 

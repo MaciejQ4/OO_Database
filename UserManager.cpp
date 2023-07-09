@@ -55,10 +55,29 @@ void UserManager::showAllUsers() {
         cout << users[i].getUserLogin() << endl;
         cout << users[i].getUserPassword() << endl;
     }
+    system("pause");
 }
 
 void UserManager::uploadUsersFromTextFile() {
 
     users = userTextFile.uploadUsersFromTextFile();
 
+}
+
+int UserManager::loginUser() {
+
+    string login, password;
+    cout << "Enter login" << endl;
+    cin >> login;
+    cout << "Enter password" << endl;
+    cin >> password;
+
+    for (size_t i = 0; i < users.size(); i++) {
+        if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
+            cout << login << " logged in with ID" << users[i].getUserID() << endl;
+            system("pause");
+            return users[i].getUserID();
+        }
+    }
+    return 0;
 }

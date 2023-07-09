@@ -35,6 +35,7 @@ public:
 	void createUser();
 	void showAllUsers();
 	void uploadUsersFromTextFile();
+	int loginUser();
 };
 
 #endif
