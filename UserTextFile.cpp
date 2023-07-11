@@ -24,7 +24,7 @@ bool UserTextFile::isUserFileEmpty() {
 
 void UserTextFile::appendUserToFile(User user) {
 
-    userFile.open(userFileName.c_str(), ios::out | ios::app);
+    userFile.open(userFileName.c_str(), ios::in | ios::app);
 
     if (userFile.good() == true) {
 
@@ -72,4 +72,56 @@ vector<User> UserTextFile::uploadUsersFromTextFile() {
     }
     userFile.close();
     return users;
+}
+
+void UserTextFile::replaceChangedPasswordInTextFile(int userID, string newPassword, User user) {
+
+    const string tempFileName = "temp_users.txt";
+    fstream tempFile(tempFileName, ios::out);
+
+    if (!tempFile.good()) {
+        cout << "Failed to create temporary file" << endl;
+        system("pause");
+        return;
+    }
+
+    userFile.open(userFileName, ios::in);
+
+    if (!userFile.good()) {
+        cout << "Failed to open file" << endl;
+        system("pause");
+        return;
+    }
+
+    string line;
+    while (getline(userFile, line)) {
+        string str = line;
+        string parts[3];
+
+        stringstream ss(str);
+
+        int i = 0;
+        while (ss.good() && i < 3) {
+            string substr;
+            getline(ss, substr, '|');
+            parts[i] = substr;
+            i++;
+        }
+        i = 0;
+
+        if (parts[0] == to_string(userID)) {
+            // Update the password in the line
+            line = parts[0] + "|" + parts[1] + "|" + newPassword + "|";
+        }
+        tempFile << line << endl;
+    }
+
+    userFile.close();
+    tempFile.close();
+
+    // Remove the original file
+    remove(userFileName.c_str());
+    // Rename the temporary file to the original file name
+    rename(tempFileName.c_str(), userFileName.c_str());
+
 }

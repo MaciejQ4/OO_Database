@@ -1,5 +1,3 @@
-
-
 #include "User.h"
 #include "Database.h"
 

@@ -1,7 +1,5 @@
 #include "User.h"
 
-#include "User.h"
-
 void User::setUserID(int newID) {
 	
 	if(newID >= 0)

@@ -3,6 +3,7 @@
 
 #include "User.h"
 #include "Database.h"
+#include "ContactManager.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -21,6 +22,10 @@ using namespace std;
 int main()
 {
     Database database;
+    int userID;
+    ContactManager contactManager;
+    UserManager userManager;
+
 
     while (true) {
         system("cls");
@@ -28,13 +33,18 @@ int main()
         cout << "1. Create new user \n";
         cout << "2. Login \n";
         cout << "3. Show all users \n";
+        //cout << "4. Change password \n"; // ROZWAZALEM ZMIANE HASLA Z TEGO POZIOMU ALE W KONCU UDALO MI SIE Z NIZSZEGO
         char choice;
         cin >> choice;
 
         switch (choice) {
         case '1': database.createUser(); break;
-        case '2': database.loginUser(); break;
+        case '2': userID = database.loginUser(); 
+                    if (userID) contactManager.Menu(userID);
+                    else system("pause");
+                    break;
         case '3': database.showAllUsers(); break;
+        //case '4': 
         }
     }
 

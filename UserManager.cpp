@@ -1,4 +1,5 @@
 #include "UserManager.h"
+#include "ContactManager.h"
 
 void UserManager::createUser() {
 
@@ -9,7 +10,6 @@ void UserManager::createUser() {
 
     cout << "User added succesfully" << endl;
     system("pause");
-
 
 }
 
@@ -50,12 +50,17 @@ bool UserManager::doesLoginExist(string login) {
 
 void UserManager::showAllUsers() {
 
-    for (int i = 0; i < users.size(); i++) {
-        cout << users[i].getUserID() << endl;
-        cout << users[i].getUserLogin() << endl;
-        cout << users[i].getUserPassword() << endl;
+    users = userTextFile.uploadUsersFromTextFile();
+    if (users.empty()) { cout << "No users yet. "; system("pause"); }
+
+    else {
+        for (int i = 0; i < users.size(); i++) {
+            cout << users[i].getUserID() << "|";
+            cout << users[i].getUserLogin() << "|";
+            cout << users[i].getUserPassword() << "|" << endl;
+        }
+        system("pause");
     }
-    system("pause");
 }
 
 void UserManager::uploadUsersFromTextFile() {
@@ -66,18 +71,40 @@ void UserManager::uploadUsersFromTextFile() {
 
 int UserManager::loginUser() {
 
-    string login, password;
-    cout << "Enter login" << endl;
+    users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO ZALOGOWANIA
+    string login, password;                         //   Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ MOZNA ZALOGOWAC SIE
+    cout << "Enter login" << endl;                  //   WYLACZNIE POPRZEDNIM HASLEM SPRZED ZMIANY
     cin >> login;
     cout << "Enter password" << endl;
     cin >> password;
 
+    
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
-            cout << login << " logged in with ID" << users[i].getUserID() << endl;
+            cout << login << " logged in with ID " << users[i].getUserID() << endl;
             system("pause");
             return users[i].getUserID();
         }
     }
-    return 0;
+    cout << "No such user. ";  return 0;
+}
+
+void UserManager::changePassword(int userID) {
+
+    cout << "Enter new password" << endl;
+    string newPassword;
+    cin >> newPassword;
+  
+    users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO WYSWIETLANIA
+                                                    //   USERA Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ WYSWIETLA GO
+                                                    // ZE STARYM HASLEM
+    for (User& user: users) {
+
+        if (user.getUserID() == userID) {
+            user.setUserPassword(newPassword);
+            userTextFile.replaceChangedPasswordInTextFile(userID, newPassword, user);
+            break;
+        }
+    }
+    cout << "Password changed succesfully. "; system("pause");
 }

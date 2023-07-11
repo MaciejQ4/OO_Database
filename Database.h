@@ -19,8 +19,6 @@
 #include <algorithm>
 using namespace std;
 
-//class User;
-
 class Database
 {
 	UserManager userManager;

@@ -32,10 +32,13 @@ class UserManager
 	UserTextFile userTextFile;
 
 public:
+	
 	void createUser();
 	void showAllUsers();
 	void uploadUsersFromTextFile();
 	int loginUser();
+	void changePassword(int userID);
+
 };
 
 #endif

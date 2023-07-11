@@ -21,7 +21,7 @@ using namespace std;
 
 class UserTextFile
 {
-	const string userFileName = "users.txt";
+	const string userFileName = "users.txt"; // VISUAL MI NA TO POZWALA A NA KONSTRUKTOR TYPU ARTURA JUZ NIE
 	fstream userFile;
 
 	bool isUserFileEmpty();
@@ -30,6 +30,7 @@ public:
 
 	void appendUserToFile(User user);
 	vector<User> uploadUsersFromTextFile();
+	void replaceChangedPasswordInTextFile(int userID, string newPassword, User user);
 
 };
 
