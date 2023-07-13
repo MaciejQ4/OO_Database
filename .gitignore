@@ -3,5 +3,5 @@ OO_Database.vcxproj.filters
 OO_Database.vcxproj.user
 contacts.txt
 users.txt
-x64
+x64/
 .gitignore
