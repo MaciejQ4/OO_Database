@@ -1,59 +1,23 @@
 #include "ContactManager.h"
 #include "UserManager.h"
 
-void ContactManager::Menu(int userID) {
+void ContactManager::createContact(int loggedID) {
 
-    uploadContactsFromTextFile(userID);
-    UserManager userManager; // <-TO MUSI BYC ZEBY MOC Z POZIOMU
-                             // TEGO MENU ZMIENIC HASLO
-
-    bool flag = true;
-    while (flag) {
-
-        system("cls");
-        cout << " USER MENU " << endl << endl;
-        cout << "1. Create an contact" << endl;
-        //cout << "2. Search database by name" << endl;
-        //cout << "3. Search database by surname" << endl;
-        cout << "4. Show all contacts in database" << endl;
-        //cout << "5. Delete a contact" << endl;
-        //cout << "6. Edit a contact" << endl;
-        cout << "7. Change password" << endl;
-        cout << "8. Sign out" << endl << endl;
-        cout << "9. Exit" << endl;
-
-        char choice;
-        cin >> choice;
-        switch (choice) {
-
-        case '1': createContact(userID);                  break;
-        //case '2': searchAndShowByName(contacts);        break;
-        //case '3': searchAndShowBySurname(contacts);     break;
-        case '4': showAllContacts(userID);                break;
-        //case '5': deleteContact(contacts, userID);      break;
-        //case '6': editContact(contacts, userID);        break;
-        case '7': userManager.changePassword(userID);     break;
-        case '8': flag = false;                           break;
-        case '9': exit(0);                                break;
-        }
-    }
-}
-
-void ContactManager::createContact(int userID) {
-
-    Contact contact = gatherCredentialsOfNewContact();
+    
+    Contact contact = gatherCredentialsOfNewContact(loggedID);
     contacts.push_back(contact);
-
-    contactsTextFile.appendContactToTextFile(contact, userID);
-
+    contactsTextFile.appendContactToTextFile(contact);
     cout << "User added succesfully. ";  system("pause");
+
 }
 
-Contact ContactManager::gatherCredentialsOfNewContact() {
+Contact ContactManager::gatherCredentialsOfNewContact(int loggedID) {
 
     Contact contact;
     contact.setContactID(assignNewIDtoContact());
 
+    contact.setUserIDofContact(loggedID);
+    
     cout << "Enter name: " << endl;
     string name;
     cin >> name;
@@ -82,9 +46,11 @@ Contact ContactManager::gatherCredentialsOfNewContact() {
     return contact;
 }
 
-void ContactManager::showAllContacts(int userID) {
+void ContactManager::showAllContacts(int loggedID) {
 
-    if (contacts.empty()) { cout << "No contacts yet. "; system("pause"); }
+    uploadContactsFromTextFile(loggedID);
+    
+        if (contacts.empty()) { cout << "No contacts yet. "; system("pause"); }
 
     else {
         for (int i = 0; i < contacts.size(); i++) {
@@ -105,9 +71,15 @@ int ContactManager::assignNewIDtoContact() {
     return newID;
 }
 
-void ContactManager::uploadContactsFromTextFile(int userID) {
+//int ContactManager::assignUserIDtoContact() {
 
-    contacts = contactsTextFile.uploadContactsFromTextFile(userID);
+//    int newContactID = contactsManager.getUserIDofContact();
+//    return newContactID;
+//}
+
+void ContactManager::uploadContactsFromTextFile(int loggedID) {
+
+    contacts = contactsTextFile.uploadContactsFromTextFile(loggedID);
 
 }
 

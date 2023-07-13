@@ -74,7 +74,7 @@ vector<User> UserTextFile::uploadUsersFromTextFile() {
     return users;
 }
 
-void UserTextFile::replaceChangedPasswordInTextFile(int userID, string newPassword, User user) {
+void UserTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user) {
 
     const string tempFileName = "temp_users.txt";
     fstream tempFile(tempFileName, ios::out);
@@ -109,7 +109,7 @@ void UserTextFile::replaceChangedPasswordInTextFile(int userID, string newPasswo
         }
         i = 0;
 
-        if (parts[0] == to_string(userID)) {
+        if (parts[0] == to_string(loggedID)) {
             // Update the password in the line
             line = parts[0] + "|" + parts[1] + "|" + newPassword + "|";
         }

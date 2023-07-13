@@ -5,6 +5,7 @@
 
 #include "User.h"
 #include "UserManager.h"
+#include "ContactManager.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -19,16 +20,26 @@
 #include <algorithm>
 using namespace std;
 
+
 class Database
 {
 	UserManager userManager;
+	ContactManager contactManager;
+
+
 
 public:
 	Database();
+
 	void createUser();
 	void showAllUsers();
 	int loginUser();
 
+	bool isUserLogged();
+	void logOut();
+	void createContact(int loggedID);
+	//void changePassword();
+	void showAllContacts(int loggedID);
 
 };
 

@@ -6,9 +6,9 @@ void Contact::setContactID(int newID) {
 		id = newID;
 }
 
-void Contact::setUserIDofContact(int userID) {
+void Contact::setUserIDofContact(int loggedID) {
 
-	userid = userID;
+	userid = loggedID;
 }
 
 void Contact::setContactName(string newname) {

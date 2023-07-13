@@ -3,7 +3,6 @@
 #ifndef CONTACTMANAGER_H
 #define CONTACTMANAGER_H
 
-
 #include "Contact.h"
 #include "ContactTextFile.h"
 
@@ -26,16 +25,17 @@ class ContactManager
 
 	vector<Contact> contacts;
 
-	Contact gatherCredentialsOfNewContact();
+	Contact gatherCredentialsOfNewContact(int loggedID);
 
 	ContactTextFile contactsTextFile;
 
 public:
-	void Menu(int userID);
-	void createContact(int userID);
-	void showAllContacts(int userID);
-	void uploadContactsFromTextFile(int userID);
+	 
+	void createContact(int loggedID);
+	void showAllContacts(int loggedID);
+	void uploadContactsFromTextFile(int loggedID);
 	int assignNewIDtoContact();
+	//int assignUserIDtoContact();
 
 };
 

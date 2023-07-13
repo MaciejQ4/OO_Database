@@ -29,8 +29,8 @@ class ContactTextFile
 
 public:
 
-	void appendContactToTextFile(Contact contact, int userID);
-	vector<Contact> uploadContactsFromTextFile(int userID);
+	void appendContactToTextFile(Contact contact);
+	vector<Contact> uploadContactsFromTextFile(int loggedID);
 	int assignNewIDtoContact();
 	
 };

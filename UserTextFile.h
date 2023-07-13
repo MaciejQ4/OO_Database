@@ -30,7 +30,7 @@ public:
 
 	void appendUserToFile(User user);
 	vector<User> uploadUsersFromTextFile();
-	void replaceChangedPasswordInTextFile(int userID, string newPassword, User user);
+	void replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user);
 
 };
 

@@ -26,7 +26,7 @@ class Contact
 public:
 
 	void setContactID(int newID);
-	void setUserIDofContact(int userID);
+	void setUserIDofContact(int loggedID);
 	void setContactName(string newname);
 	void setContactSurname(string newsurname);
 	void setContactPhone(string newphone);

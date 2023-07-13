@@ -21,33 +21,51 @@ using namespace std;
 
 int main()
 {
-    Database database;
-    int userID;
-    ContactManager contactManager;
-    UserManager userManager;
 
+    Database database;
+    int loggedID = 0;
+    char choice;
 
     while (true) {
-        system("cls");
-        cout << "Main menu\n";
-        cout << "1. Create new user \n";
-        cout << "2. Login \n";
-        cout << "3. Show all users \n";
-        //cout << "4. Change password \n"; // ROZWAZALEM ZMIANE HASLA Z TEGO POZIOMU ALE W KONCU UDALO MI SIE Z NIZSZEGO
-        char choice;
-        cin >> choice;
+        
+        if (database.isUserLogged() == false) {
 
-        switch (choice) {
-        case '1': database.createUser(); break;
-        case '2': userID = database.loginUser(); 
-                    if (userID) contactManager.Menu(userID);
-                    else system("pause");
-                    break;
-        case '3': database.showAllUsers(); break;
-        //case '4': 
+            system("cls");
+            cout << "Main menu\n";
+            cout << "1. Create new user \n";
+            cout << "2. Login \n";
+            cout << "3. Show all users \n";
+            cin >> choice;
+
+            switch (choice) {
+            case '1': database.createUser();            break;
+            case '2': loggedID = database.loginUser();  break;
+            case '3': database.showAllUsers();          break; 
+            }
+        }
+/////////////////////////////////////////////////////////////////////        
+        else {
+
+            
+            system("cls");
+            cout << " USER MENU "               << endl << endl;
+            cout << "1. Create a contact"              << endl;
+            cout << "4. Show all contacts in database"  << endl;
+            cout << "8. Sign out"               << endl << endl;
+            cout << "9. Exit"                           << endl;
+
+            cin >> choice;
+
+            switch (choice) {
+
+            case '1': database.createContact(loggedID);         break;
+            case '4': database.showAllContacts(loggedID);       break;
+            //case '7': userManager.changePassword(userID);     break;
+            case '8': database.logOut();                        break;
+            case '9': exit(0);                                  break;
+            }
         }
     }
-
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -22,14 +22,14 @@ bool ContactTextFile::isContactsTextFileEmpty() {
         return false;
 }
 
-void ContactTextFile::appendContactToTextFile(Contact contact, int userID) {
+void ContactTextFile::appendContactToTextFile(Contact contact) {
 
     contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
 
     if (contactsTextFile.good() == true) {
 
-        contactsTextFile << contact.getContactID() << "|";
-        contactsTextFile << to_string(userID) << "|";
+        contactsTextFile << to_string(contact.getContactID()) << "|";
+        contactsTextFile << to_string(contact.getUserIDofContact()) << "|";     ////best way?
         contactsTextFile << contact.getContactName() << "|";
         contactsTextFile << contact.getContactSurname() << "|";
         contactsTextFile << contact.getContactPhone() << "|";
@@ -41,7 +41,7 @@ void ContactTextFile::appendContactToTextFile(Contact contact, int userID) {
     else cout << "failed";
 }
 
-vector<Contact> ContactTextFile::uploadContactsFromTextFile(int userID) {
+vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
                             
     vector<Contact> contacts;
     contactsTextFile.open(contactsTextFileName, ios::in | ios::app);
@@ -76,7 +76,7 @@ vector<Contact> ContactTextFile::uploadContactsFromTextFile(int userID) {
         contact.setContactEmail(parts[5]);
         contact.setContactAddress(parts[6]);
 
-        if(contact.getUserIDofContact() == userID)
+        if(contact.getUserIDofContact() == loggedID)
         contacts.push_back(contact);
     }
     contactsTextFile.close();

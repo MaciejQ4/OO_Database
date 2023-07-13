@@ -5,6 +5,7 @@
 
 #include "User.h"
 #include "UserTextFile.h"
+//#include "Database.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -21,7 +22,6 @@ using namespace std;
 
 class UserManager
 {
-	int userID;
 
 	vector <User> users;
 
@@ -30,14 +30,19 @@ class UserManager
 	bool doesLoginExist(string login);
 
 	UserTextFile userTextFile;
+	int loggedID;
+	
 
 public:
 	
+	int getLoggedID();
 	void createUser();
 	void showAllUsers();
 	void uploadUsersFromTextFile();
+	bool isUserLogged();
 	int loginUser();
-	void changePassword(int userID);
+	void logOut();
+	//void changePassword();
 
 };
 

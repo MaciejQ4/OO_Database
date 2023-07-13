@@ -1,5 +1,5 @@
 #include "UserManager.h"
-#include "ContactManager.h"
+
 
 void UserManager::createUser() {
 
@@ -50,7 +50,7 @@ bool UserManager::doesLoginExist(string login) {
 
 void UserManager::showAllUsers() {
 
-    users = userTextFile.uploadUsersFromTextFile();
+    uploadUsersFromTextFile();
     if (users.empty()) { cout << "No users yet. "; system("pause"); }
 
     else {
@@ -69,42 +69,61 @@ void UserManager::uploadUsersFromTextFile() {
 
 }
 
+bool UserManager::isUserLogged() {
+
+    if (loggedID > 0) return true;
+    else return false;
+}
+
+//int UserManager::getLoggedID() {
+    
+//    return loggedID;
+//}
+
+void UserManager::logOut() {
+
+    loggedID = 0;
+}
+
+
 int UserManager::loginUser() {
 
-    users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO ZALOGOWANIA
-    string login, password;                         //   Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ MOZNA ZALOGOWAC SIE
-    cout << "Enter login" << endl;                  //   WYLACZNIE POPRZEDNIM HASLEM SPRZED ZMIANY
+    string login, password;                         
+    cout << "Enter login" << endl;                  
     cin >> login;
     cout << "Enter password" << endl;
     cin >> password;
-
     
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
             cout << login << " logged in with ID " << users[i].getUserID() << endl;
             system("pause");
-            return users[i].getUserID();
-        }
+            return loggedID = users[i].getUserID(); /////
+
+            
+        }      
     }
-    cout << "No such user. ";  return 0;
+    cout << "No such user. "; system("pause"); return 0;
 }
 
-void UserManager::changePassword(int userID) {
+/*
+void UserManager::changePassword() {
 
     cout << "Enter new password" << endl;
     string newPassword;
     cin >> newPassword;
   
-    users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO WYSWIETLANIA
+    //users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO WYSWIETLANIA
                                                     //   USERA Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ WYSWIETLA GO
                                                     // ZE STARYM HASLEM
     for (User& user: users) {
 
-        if (user.getUserID() == userID) {
+        if (user.getUserID() == loggedID) {
             user.setUserPassword(newPassword);
-            userTextFile.replaceChangedPasswordInTextFile(userID, newPassword, user);
+            userTextFile.replaceChangedPasswordInTextFile(loggedID, newPassword, user);
             break;
         }
     }
     cout << "Password changed succesfully. "; system("pause");
 }
+*/
