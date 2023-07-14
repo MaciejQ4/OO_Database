@@ -23,7 +23,6 @@ int main()
 {
 
     Database database;
-    int loggedID = 0;
     char choice;
 
     while (true) {
@@ -39,7 +38,7 @@ int main()
 
             switch (choice) {
             case '1': database.createUser();            break;
-            case '2': loggedID = database.loginUser();  break;
+            case '2': database.loginUser();         break;
             case '3': database.showAllUsers();          break; 
             }
         }
@@ -53,13 +52,14 @@ int main()
             cout << "4. Show all contacts in database"  << endl;
             cout << "8. Sign out"               << endl << endl;
             cout << "9. Exit"                           << endl;
+            
 
             cin >> choice;
 
             switch (choice) {
 
-            case '1': database.createContact(loggedID);         break;
-            case '4': database.showAllContacts(loggedID);       break;
+            case '1': database.createContact();         break;
+            case '4': database.showAllContacts();       break;
             //case '7': userManager.changePassword(userID);     break;
             case '8': database.logOut();                        break;
             case '9': exit(0);                                  break;

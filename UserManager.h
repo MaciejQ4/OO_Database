@@ -33,14 +33,17 @@ class UserManager
 	int loggedID;
 	
 
+	
+
 public:
 	
+	void setLoggedID(int id);
 	int getLoggedID();
 	void createUser();
 	void showAllUsers();
 	void uploadUsersFromTextFile();
 	bool isUserLogged();
-	int loginUser();
+	void loginUser();
 	void logOut();
 	//void changePassword();
 

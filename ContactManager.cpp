@@ -1,22 +1,23 @@
 #include "ContactManager.h"
 #include "UserManager.h"
 
-void ContactManager::createContact(int loggedID) {
+void ContactManager::createContact() {
 
     
-    Contact contact = gatherCredentialsOfNewContact(loggedID);
+    Contact contact = gatherCredentialsOfNewContact();
     contacts.push_back(contact);
     contactsTextFile.appendContactToTextFile(contact);
     cout << "User added succesfully. ";  system("pause");
 
 }
 
-Contact ContactManager::gatherCredentialsOfNewContact(int loggedID) {
+Contact ContactManager::gatherCredentialsOfNewContact() {
 
     Contact contact;
     contact.setContactID(assignNewIDtoContact());
 
-    contact.setUserIDofContact(loggedID);
+    int id = getLoggedID();
+    contact.setUserIDofContact(id);
     
     cout << "Enter name: " << endl;
     string name;
@@ -46,9 +47,8 @@ Contact ContactManager::gatherCredentialsOfNewContact(int loggedID) {
     return contact;
 }
 
-void ContactManager::showAllContacts(int loggedID) {
+void ContactManager::showAllContacts() {
 
-    uploadContactsFromTextFile(loggedID);
     
         if (contacts.empty()) { cout << "No contacts yet. "; system("pause"); }
 
@@ -77,10 +77,18 @@ int ContactManager::assignNewIDtoContact() {
 //    return newContactID;
 //}
 
-void ContactManager::uploadContactsFromTextFile(int loggedID) {
+void ContactManager::uploadContactsFromTextFile(int id) {
 
-    contacts = contactsTextFile.uploadContactsFromTextFile(loggedID);
-
+    contacts = contactsTextFile.uploadContactsFromTextFile(id);
 }
 
 
+int ContactManager::getLoggedID() {
+
+    return loggedID;
+}
+
+void ContactManager::setLoggedID(int id) {
+
+    loggedID = id;
+}

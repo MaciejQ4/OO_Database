@@ -26,6 +26,7 @@ class ContactTextFile
 	fstream contactsTextFile;
 
 	bool isContactsTextFileEmpty();
+	string createLineOfData(Contact contact);
 
 public:
 

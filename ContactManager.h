@@ -22,18 +22,21 @@ using namespace std;
 
 class ContactManager
 {
-
+	int loggedID;
 	vector<Contact> contacts;
 
-	Contact gatherCredentialsOfNewContact(int loggedID);
+	Contact gatherCredentialsOfNewContact();
 
 	ContactTextFile contactsTextFile;
+	
 
 public:
 	 
-	void createContact(int loggedID);
-	void showAllContacts(int loggedID);
-	void uploadContactsFromTextFile(int loggedID);
+	void setLoggedID(int id);
+	int getLoggedID();
+	void createContact();
+	void showAllContacts();
+	void uploadContactsFromTextFile(int id);
 	int assignNewIDtoContact();
 	//int assignUserIDtoContact();
 

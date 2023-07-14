@@ -27,14 +27,24 @@ void UserTextFile::appendUserToFile(User user) {
     userFile.open(userFileName.c_str(), ios::in | ios::app);
 
     if (userFile.good() == true) {
+        string lineOfData = "";
+        lineOfData = createLineOfData(user);
 
-        userFile << user.getUserID() << "|";
-        userFile << user.getUserLogin() << "|";
-        userFile << user.getUserPassword() << "|" << endl;
-
+        if (isUserFileEmpty()) userFile << lineOfData;
+        else                 userFile << endl << lineOfData;
+        
         userFile.close();
     }
     else cout << "failed";
+}
+
+string UserTextFile::createLineOfData(User user) {
+
+    string line = "";
+    line += to_string(user.getUserID()) + "|";
+    line += user.getUserLogin() + "|";
+    line += user.getUserPassword() + "|";
+    return line;
 }
 
 vector<User> UserTextFile::uploadUsersFromTextFile() {

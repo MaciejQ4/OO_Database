@@ -28,6 +28,7 @@ class UserTextFile
 
 public:
 
+	string createLineOfData(User user);
 	void appendUserToFile(User user);
 	vector<User> uploadUsersFromTextFile();
 	void replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user);

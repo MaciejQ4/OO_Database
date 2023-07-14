@@ -31,9 +31,17 @@ void Database::showAllUsers(){
 	userManager.showAllUsers();
 }
 
-int Database::loginUser() {
+void Database::loginUser() {
 
-	return userManager.loginUser();	
+	userManager.loginUser();
+	int id = userManager.getLoggedID();
+	contactManager.setLoggedID(id);
+	contactManager.uploadContactsFromTextFile(id);
+}
+
+void Database::setLoggedID(int id) {
+
+	userManager.setLoggedID(id);
 }
 
 bool Database::isUserLogged() {
@@ -51,13 +59,13 @@ void Database::logOut() {
 	userManager.logOut();
 }
 
-void Database::createContact(int loggedID) {
+void Database::createContact() {
 
-	contactManager.createContact(loggedID);
+	contactManager.createContact();
 }
 
-void Database::showAllContacts(int loggedID) {
+void Database::showAllContacts() {
 
-	contactManager.showAllContacts(loggedID);
+	contactManager.showAllContacts();
 
 }

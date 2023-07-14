@@ -75,18 +75,22 @@ bool UserManager::isUserLogged() {
     else return false;
 }
 
-//int UserManager::getLoggedID() {
+int UserManager::getLoggedID() {
     
-//    return loggedID;
-//}
+    return loggedID;
+}
+
+void UserManager::setLoggedID(int id) {
+
+    loggedID = id;
+}
 
 void UserManager::logOut() {
 
     loggedID = 0;
 }
 
-
-int UserManager::loginUser() {
+void UserManager::loginUser() {
 
     string login, password;                         
     cout << "Enter login" << endl;                  
@@ -96,16 +100,17 @@ int UserManager::loginUser() {
     
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
-            cout << login << " logged in with ID " << users[i].getUserID() << endl;
+            cout << login << " logged in with ID: " << users[i].getUserID() << endl;
             system("pause");
-            return loggedID = users[i].getUserID(); /////
-
-            
+            int id = users[i].getUserID();
+            setLoggedID(id);
+            return;          
         }      
     }
-    cout << "No such user. "; system("pause"); return 0;
+    cout << "No such user. "; system("pause"); return;
 }
 
+//
 /*
 void UserManager::changePassword() {
 

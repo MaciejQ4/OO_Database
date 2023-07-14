@@ -33,13 +33,14 @@ public:
 
 	void createUser();
 	void showAllUsers();
-	int loginUser();
+	void loginUser();
+	void setLoggedID(int id);
 
 	bool isUserLogged();
 	void logOut();
-	void createContact(int loggedID);
+	void createContact();
 	//void changePassword();
-	void showAllContacts(int loggedID);
+	void showAllContacts();
 
 };
 
