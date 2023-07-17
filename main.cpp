@@ -34,6 +34,7 @@ int main()
             cout << "1. Create new user \n";
             cout << "2. Login \n";
             cout << "3. Show all users \n";
+            
             cin >> choice;
 
             switch (choice) {
@@ -48,21 +49,20 @@ int main()
             
             system("cls");
             cout << " USER MENU "               << endl << endl;
-            cout << "1. Create a contact"              << endl;
+            cout << "1. Create a contact"               << endl;
             cout << "4. Show all contacts in database"  << endl;
+            cout << "7. Change password"                << endl;
             cout << "8. Sign out"               << endl << endl;
             cout << "9. Exit"                           << endl;
             
-
             cin >> choice;
-
             switch (choice) {
 
-            case '1': database.createContact();         break;
-            case '4': database.showAllContacts();       break;
-            //case '7': userManager.changePassword(userID);     break;
-            case '8': database.logOut();                        break;
-            case '9': exit(0);                                  break;
+            case '1': database.createContact();           break;
+            case '4': database.showAllContacts();         break;
+            case '7': database.changePassword();          break;
+            case '8': database.logOut();                  break;
+            case '9': exit(0);                            break;
             }
         }
     }

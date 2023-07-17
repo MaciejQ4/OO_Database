@@ -45,7 +45,7 @@ public:
 	bool isUserLogged();
 	void loginUser();
 	void logOut();
-	//void changePassword();
+	void changePassword();
 
 };
 

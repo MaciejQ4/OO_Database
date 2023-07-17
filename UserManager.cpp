@@ -111,7 +111,7 @@ void UserManager::loginUser() {
 }
 
 //
-/*
+
 void UserManager::changePassword() {
 
     cout << "Enter new password" << endl;
@@ -119,8 +119,7 @@ void UserManager::changePassword() {
     cin >> newPassword;
   
     //users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO WYSWIETLANIA
-                                                    //   USERA Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ WYSWIETLA GO
-                                                    // ZE STARYM HASLEM
+                                                    //   USERA Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ WYSWIETLA GO // ZE STARYM HASLEM
     for (User& user: users) {
 
         if (user.getUserID() == loggedID) {
@@ -131,4 +130,3 @@ void UserManager::changePassword() {
     }
     cout << "Password changed succesfully. "; system("pause");
 }
-*/

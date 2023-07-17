@@ -27,20 +27,21 @@ class Database
 	ContactManager contactManager;
 
 
-
 public:
+
 	Database();
 
+	bool isUserLogged();
 	void createUser();
-	void showAllUsers();
 	void loginUser();
+	void showAllUsers();
 	void setLoggedID(int id);
 
-	bool isUserLogged();
-	void logOut();
+
 	void createContact();
-	//void changePassword();
 	void showAllContacts();
+	void changePassword();
+	void logOut();
 
 };
 
