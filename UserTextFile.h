@@ -13,6 +13,7 @@ class UserTextFile
 
 public:
 
+	UserTextFile(string NAMEOFTEXTFILE) : userFileName(NAMEOFTEXTFILE) {};
 	vector<User> uploadUsersFromTextFile();
 	string createLineOfData(User user);
 	void appendUserToFile(User user);

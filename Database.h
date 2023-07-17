@@ -14,7 +14,9 @@ class Database
 
 public:
 
-	Database();
+	Database(string userFileName) : userManager(userFileName) {
+		userManager.uploadUsersFromTextFile();
+	};
 
 	bool isUserLogged();
 	void createUser();

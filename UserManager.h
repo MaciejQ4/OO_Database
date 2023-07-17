@@ -3,6 +3,7 @@
 #ifndef USERMANAGER_H
 #define USERMANAGER_H
 
+#include "User.h"
 #include "UserTextFile.h"
 
 
@@ -19,7 +20,8 @@ class UserManager
 	
 
 public:
-	
+	UserManager(string userFileName) : userTextFile (userFileName) {};
+
 	void setLoggedID(int id);
 	int getLoggedID();
 	void uploadUsersFromTextFile();

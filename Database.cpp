@@ -1,11 +1,5 @@
 #include "Database.h"
 
-
-Database::Database() {
-	
-	userManager.uploadUsersFromTextFile();
-}
-
 bool Database::isUserLogged() {
 
 	return userManager.isUserLogged();
