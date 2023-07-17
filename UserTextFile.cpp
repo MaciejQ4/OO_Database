@@ -1,26 +1,26 @@
 #include "UserTextFile.h"
 
 
-bool UserTextFile::isUserFileEmpty() {
+bool UsersTextFile::isUserFileEmpty() {
 
-    userFile.seekg(0, ios::end);
-    if (userFile.tellg() == 0)
+    usersTextFile.seekg(0, ios::end);
+    if (usersTextFile.tellg() == 0)
         return true;
     else
         return false;
 }
 
-vector<User> UserTextFile::uploadUsersFromTextFile() {
+vector<User> UsersTextFile::uploadUsersFromTextFile() {
 
     vector<User> users;
-    userFile.open(userFileName, ios::in | ios::app);
+    usersTextFile.open(usersTextFileName, ios::in | ios::app);
 
-    if (!userFile.good()) {
+    if (!usersTextFile.good()) {
         cout << "failed"; exit(0);
     }
 
     string line;
-    while (getline(userFile, line)) {
+    while (getline(usersTextFile, line)) {
 
         string str = line;
         string parts[3];
@@ -43,11 +43,11 @@ vector<User> UserTextFile::uploadUsersFromTextFile() {
 
         users.push_back(user);
     }
-    userFile.close();
+    usersTextFile.close();
     return users;
 }
 
-string UserTextFile::createLineOfData(User user) {
+string UsersTextFile::createLineOfData(User user) {
 
     string line = "";
     line += to_string(user.getUserID()) + "|";
@@ -57,24 +57,24 @@ string UserTextFile::createLineOfData(User user) {
 }
 
 
-void UserTextFile::appendUserToFile(User user) {
+void UsersTextFile::appendUserToFile(User user) {
 
-    userFile.open(userFileName.c_str(), ios::in | ios::app);
+    usersTextFile.open(usersTextFileName.c_str(), ios::in | ios::app);
 
-    if (userFile.good() == true) {
+    if (usersTextFile.good() == true) {
         string lineOfData = "";
         lineOfData = createLineOfData(user);
 
-        if (isUserFileEmpty()) userFile << lineOfData;
-        else                 userFile << endl << lineOfData;
+        if (isUserFileEmpty()) usersTextFile << lineOfData;
+        else                   usersTextFile << endl << lineOfData;
         
-        userFile.close();
+        usersTextFile.close();
     }
     else cout << "failed";
 }
 
 
-void UserTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user) {
+void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user) {
 
     const string tempFileName = "temp_users.txt";
     fstream tempFile(tempFileName, ios::out);
@@ -85,16 +85,16 @@ void UserTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPass
         return;
     }
 
-    userFile.open(userFileName, ios::in);
+    usersTextFile.open(usersTextFileName, ios::in);
 
-    if (!userFile.good()) {
+    if (!usersTextFile.good()) {
         cout << "Failed to open file" << endl;
         system("pause");
         return;
     }
 
     string line;
-    while (getline(userFile, line)) {
+    while (getline(usersTextFile, line)) {
         string str = line;
         string parts[3];
 
@@ -116,12 +116,12 @@ void UserTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPass
         tempFile << line << endl;
     }
 
-    userFile.close();
+    usersTextFile.close();
     tempFile.close();
 
     // Remove the original file
-    remove(userFileName.c_str());
+    remove(usersTextFileName.c_str());
     // Rename the temporary file to the original file name
-    rename(tempFileName.c_str(), userFileName.c_str());
+    rename(tempFileName.c_str(), usersTextFileName.c_str());
 
 }

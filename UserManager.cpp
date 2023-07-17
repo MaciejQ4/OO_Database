@@ -48,7 +48,7 @@ int UserManager::getLoggedID() {
 
 void UserManager::uploadUsersFromTextFile() {
 
-    users = userTextFile.uploadUsersFromTextFile();
+    users = usersTextFile.uploadUsersFromTextFile();
 
 }
 
@@ -89,7 +89,7 @@ void UserManager::createUser() {
     User user = gatherCredentialsOfNewUser();
     users.push_back(user);
 
-    userTextFile.appendUserToFile(user);
+    usersTextFile.appendUserToFile(user);
 
     cout << "User added succesfully" << endl;
     system("pause");
@@ -122,7 +122,7 @@ void UserManager::changePassword() {
 
         if (user.getUserID() == loggedID) {
             user.setUserPassword(newPassword);
-            userTextFile.replaceChangedPasswordInTextFile(loggedID, newPassword, user);
+            usersTextFile.replaceChangedPasswordInTextFile(loggedID, newPassword, user);
             break;
         }
     }

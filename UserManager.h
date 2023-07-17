@@ -12,7 +12,7 @@ class UserManager
 	int loggedID;
 
 	vector <User> users;
-	UserTextFile userTextFile;
+	UsersTextFile usersTextFile;
 
 	User gatherCredentialsOfNewUser();
 	int assignIDtoNewUser();
@@ -20,7 +20,7 @@ class UserManager
 	
 
 public:
-	UserManager(string userFileName) : userTextFile (userFileName) {};
+	UserManager(string usersTextFileName) : usersTextFile (usersTextFileName) {};
 
 	void setLoggedID(int id);
 	int getLoggedID();

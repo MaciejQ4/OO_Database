@@ -4,16 +4,16 @@
 
 #include "User.h"
 
-class UserTextFile
+class UsersTextFile
 {
-	const string userFileName = "users.txt"; // VISUAL MI NA TO POZWALA A NA KONSTRUKTOR TYPU ARTURA JUZ NIE
-	fstream userFile;
+	const string usersTextFileName = "users.txt";
+	fstream usersTextFile;
 
 	bool isUserFileEmpty();
 
 public:
 
-	UserTextFile(string NAMEOFTEXTFILE) : userFileName(NAMEOFTEXTFILE) {};
+	UsersTextFile(string NAMEOFTEXTFILE) : usersTextFileName(NAMEOFTEXTFILE) {};
 	vector<User> uploadUsersFromTextFile();
 	string createLineOfData(User user);
 	void appendUserToFile(User user);
