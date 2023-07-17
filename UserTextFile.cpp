@@ -1,17 +1,5 @@
 #include "UserTextFile.h"
 
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
-#include <cstdlib>
-#include <stdlib.h>
-#include <Windows.h>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <algorithm>
-using namespace std;
 
 bool UserTextFile::isUserFileEmpty() {
 
@@ -20,31 +8,6 @@ bool UserTextFile::isUserFileEmpty() {
         return true;
     else
         return false;
-}
-
-void UserTextFile::appendUserToFile(User user) {
-
-    userFile.open(userFileName.c_str(), ios::in | ios::app);
-
-    if (userFile.good() == true) {
-        string lineOfData = "";
-        lineOfData = createLineOfData(user);
-
-        if (isUserFileEmpty()) userFile << lineOfData;
-        else                 userFile << endl << lineOfData;
-        
-        userFile.close();
-    }
-    else cout << "failed";
-}
-
-string UserTextFile::createLineOfData(User user) {
-
-    string line = "";
-    line += to_string(user.getUserID()) + "|";
-    line += user.getUserLogin() + "|";
-    line += user.getUserPassword() + "|";
-    return line;
 }
 
 vector<User> UserTextFile::uploadUsersFromTextFile() {
@@ -83,6 +46,33 @@ vector<User> UserTextFile::uploadUsersFromTextFile() {
     userFile.close();
     return users;
 }
+
+string UserTextFile::createLineOfData(User user) {
+
+    string line = "";
+    line += to_string(user.getUserID()) + "|";
+    line += user.getUserLogin() + "|";
+    line += user.getUserPassword() + "|";
+    return line;
+}
+
+
+void UserTextFile::appendUserToFile(User user) {
+
+    userFile.open(userFileName.c_str(), ios::in | ios::app);
+
+    if (userFile.good() == true) {
+        string lineOfData = "";
+        lineOfData = createLineOfData(user);
+
+        if (isUserFileEmpty()) userFile << lineOfData;
+        else                 userFile << endl << lineOfData;
+        
+        userFile.close();
+    }
+    else cout << "failed";
+}
+
 
 void UserTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user) {
 

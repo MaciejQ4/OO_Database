@@ -1,22 +1,9 @@
 // OO_Database.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "User.h"
 #include "Database.h"
-#include "ContactManager.h"
 
 #include <iostream>
-#include <stdlib.h>
-#include <string.h>
-#include <cstdlib>
-#include <stdlib.h>
-#include <Windows.h>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <algorithm>
-
 using namespace std;
 
 int main()
@@ -38,15 +25,14 @@ int main()
             cin >> choice;
 
             switch (choice) {
-            case '1': database.createUser();            break;
-            case '2': database.loginUser();         break;
-            case '3': database.showAllUsers();          break; 
+            case '1': database.createUser();              break;
+            case '2': database.loginUser();               break;
+            case '3': database.showAllUsers();            break; 
             }
         }
 /////////////////////////////////////////////////////////////////////        
         else {
-
-            
+   
             system("cls");
             cout << " USER MENU "               << endl << endl;
             cout << "1. Create a contact"               << endl;

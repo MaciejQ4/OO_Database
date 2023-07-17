@@ -3,22 +3,7 @@
 #ifndef CONTACTMANAGER_H
 #define CONTACTMANAGER_H
 
-#include "Contact.h"
 #include "ContactTextFile.h"
-
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
-#include <cstdlib>
-#include <stdlib.h>
-#include <Windows.h>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <algorithm>
-
-using namespace std;
 
 class ContactManager
 {
@@ -34,11 +19,10 @@ public:
 	 
 	void setLoggedID(int id);
 	int getLoggedID();
-	void createContact();
-	void showAllContacts();
 	void uploadContactsFromTextFile(int id);
+	void createContact();
 	int assignNewIDtoContact();
-	//int assignUserIDtoContact();
+	void showAllContacts();
 
 };
 

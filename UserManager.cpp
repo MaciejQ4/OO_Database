@@ -1,18 +1,6 @@
 #include "UserManager.h"
 
 
-void UserManager::createUser() {
-
-    User user = gatherCredentialsOfNewUser();
-    users.push_back(user);
-    
-    userTextFile.appendUserToFile(user);
-
-    cout << "User added succesfully" << endl;
-    system("pause");
-
-}
-
 User UserManager::gatherCredentialsOfNewUser() {
 
     User user;
@@ -48,6 +36,66 @@ bool UserManager::doesLoginExist(string login) {
     return false;
 }
 
+void UserManager::setLoggedID(int id) {
+
+    loggedID = id;
+}
+
+int UserManager::getLoggedID() {
+
+    return loggedID;
+}
+
+void UserManager::uploadUsersFromTextFile() {
+
+    users = userTextFile.uploadUsersFromTextFile();
+
+}
+
+bool UserManager::isUserLogged() {
+
+    if (loggedID > 0) return true;
+    else return false;
+}
+
+void UserManager::loginUser() {
+
+    string login, password;
+    cout << "Enter login" << endl;
+    cin >> login;
+    cout << "Enter password" << endl;
+    cin >> password;
+
+    for (size_t i = 0; i < users.size(); i++) {
+        if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
+            cout << login << " logged in with ID: " << users[i].getUserID() << endl;
+            system("pause");
+            int id = users[i].getUserID();
+            setLoggedID(id);
+            return;
+        }
+    }
+    cout << "No such user. "; system("pause"); return;
+}
+
+void UserManager::logOut() {
+
+    loggedID = 0;
+}
+
+
+void UserManager::createUser() {
+
+    User user = gatherCredentialsOfNewUser();
+    users.push_back(user);
+
+    userTextFile.appendUserToFile(user);
+
+    cout << "User added succesfully" << endl;
+    system("pause");
+
+}
+
 void UserManager::showAllUsers() {
 
     uploadUsersFromTextFile();
@@ -63,54 +111,6 @@ void UserManager::showAllUsers() {
     }
 }
 
-void UserManager::uploadUsersFromTextFile() {
-
-    users = userTextFile.uploadUsersFromTextFile();
-
-}
-
-bool UserManager::isUserLogged() {
-
-    if (loggedID > 0) return true;
-    else return false;
-}
-
-int UserManager::getLoggedID() {
-    
-    return loggedID;
-}
-
-void UserManager::setLoggedID(int id) {
-
-    loggedID = id;
-}
-
-void UserManager::logOut() {
-
-    loggedID = 0;
-}
-
-void UserManager::loginUser() {
-
-    string login, password;                         
-    cout << "Enter login" << endl;                  
-    cin >> login;
-    cout << "Enter password" << endl;
-    cin >> password;
-    
-    for (size_t i = 0; i < users.size(); i++) {
-        if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
-            cout << login << " logged in with ID: " << users[i].getUserID() << endl;
-            system("pause");
-            int id = users[i].getUserID();
-            setLoggedID(id);
-            return;          
-        }      
-    }
-    cout << "No such user. "; system("pause"); return;
-}
-
-//
 
 void UserManager::changePassword() {
 
@@ -118,8 +118,6 @@ void UserManager::changePassword() {
     string newPassword;
     cin >> newPassword;
   
-    //users = userTextFile.uploadUsersFromTextFile(); // <-TO JEST POTRZEBNE TUTAJ DO PRZYPADKU PONOWNEGO WYSWIETLANIA
-                                                    //   USERA Z DOPIERO CO ZMIENIONYM HASLEM. INACZEJ WYSWIETLA GO // ZE STARYM HASLEM
     for (User& user: users) {
 
         if (user.getUserID() == loggedID) {

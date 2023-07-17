@@ -1,17 +1,5 @@
 #include "ContactTextFile.h"
 
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
-#include <cstdlib>
-#include <stdlib.h>
-#include <Windows.h>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <algorithm>
-using namespace std;
 
 bool ContactTextFile::isContactsTextFileEmpty() {
 
@@ -20,6 +8,19 @@ bool ContactTextFile::isContactsTextFileEmpty() {
         return true;
     else
         return false;
+}
+
+string ContactTextFile::createLineOfData(Contact contact) {
+
+    string line = "";
+    line += to_string(contact.getContactID()) + "|";
+    line += to_string(contact.getUserIDofContact()) + "|";
+    line += contact.getContactName() + "|";
+    line += contact.getContactSurname() + "|";
+    line += contact.getContactPhone() + "|";
+    line += contact.getContactEmail() + "|";
+    line += contact.getContactAddress() + "|";
+    return line;
 }
 
 void ContactTextFile::appendContactToTextFile(Contact contact) {
@@ -40,18 +41,6 @@ void ContactTextFile::appendContactToTextFile(Contact contact) {
     else cout << "failed";
 }
 
-string ContactTextFile::createLineOfData(Contact contact) {
-
-    string line = "";
-    line += to_string(contact.getContactID()) + "|";
-    line += to_string(contact.getUserIDofContact()) + "|";
-    line += contact.getContactName() + "|";
-    line += contact.getContactSurname() + "|";
-    line += contact.getContactPhone() + "|";
-    line += contact.getContactEmail() + "|";
-    line += contact.getContactAddress() + "|";
-    return line;
-}
 
 vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
                             
