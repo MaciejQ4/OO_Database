@@ -1,5 +1,6 @@
 #include "UserManager.h"
-
+#include "OtherFunctions.h"
+OtherFunctions otherFunctions;
 
 User UserManager::gatherCredentialsOfNewUser() {
 
@@ -7,13 +8,11 @@ User UserManager::gatherCredentialsOfNewUser() {
     user.setUserID(assignIDtoNewUser());
 
     cout << "Enter login: " << endl;
-    string login;
-    cin >> login;
+    string login = otherFunctions.readLine();
     user.setUserLogin(login);
 
     cout << "Enter password: " << endl;
-    string password;
-    cin >> password;
+    string password = otherFunctions.readLine();
     user.setUserPassword(password);
 
     return user;
@@ -60,11 +59,11 @@ bool UserManager::isUserLogged() {
 
 void UserManager::loginUser() {
 
-    string login, password;
+    
     cout << "Enter login" << endl;
-    cin >> login;
+    string login = otherFunctions.readLine();
     cout << "Enter password" << endl;
-    cin >> password;
+    string password = otherFunctions.readLine();
 
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {

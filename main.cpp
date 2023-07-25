@@ -2,13 +2,13 @@
 //
 
 #include "Database.h"
-
+#include "OtherFunctions.h"
 #include <iostream>
 using namespace std;
 
 int main()
 {
-
+    OtherFunctions otherFunctions;
     Database database("users.txt");
     char choice;
 
@@ -22,7 +22,7 @@ int main()
             cout << "2. Login \n";
             cout << "3. Show all users \n";
             
-            cin >> choice;
+            choice = otherFunctions.readChar();
 
             switch (choice) {
             case '1': database.createUser();              break;
@@ -41,7 +41,7 @@ int main()
             cout << "8. Sign out"               << endl << endl;
             cout << "9. Exit"                           << endl;
             
-            cin >> choice;
+            choice = otherFunctions.readChar();
             switch (choice) {
 
             case '1': database.createContact();           break;
