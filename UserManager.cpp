@@ -114,8 +114,7 @@ void UserManager::showAllUsers() {
 void UserManager::changePassword() {
 
     cout << "Enter new password" << endl;
-    string newPassword;
-    cin >> newPassword;
+    string newPassword  = otherFunctions.readLine();
   
     for (User& user: users) {
 

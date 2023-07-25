@@ -1,4 +1,8 @@
+#include "OtherFunctions.h"
 #include "ContactManager.h"
+
+
+//OtherFunctions otherFunctions;
 
 Contact ContactManager::gatherCredentialsOfNewContact() {
 
@@ -9,28 +13,23 @@ Contact ContactManager::gatherCredentialsOfNewContact() {
     contact.setUserIDofContact(id);
     
     cout << "Enter name: " << endl;
-    string name;
-    cin >> name;
+    string name = OtherFunctions::readLine();
     contact.setContactName(name);
 
     cout << "Enter surname: " << endl;
-    string surname;
-    cin >> surname;
+    string surname = OtherFunctions::readLine();
     contact.setContactSurname(surname);
 
     cout << "Enter phone: " << endl;
-    string phone;
-    cin >> phone;
+    string phone = OtherFunctions::readLine();
     contact.setContactPhone(phone);
 
     cout << "Enter email: " << endl;
-    string email;
-    cin >> email;
+    string email = OtherFunctions::readLine();
     contact.setContactEmail(email);
 
     cout << "Enter address: " << endl;
-    string address;
-    cin >> address;
+    string address = OtherFunctions::readLine();
     contact.setContactAddress(address);
 
     return contact;
