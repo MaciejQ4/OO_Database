@@ -14,7 +14,9 @@ class Database
 
 public:
 
-	Database(string userFileName) : userManager(userFileName) {
+	Database(string userFileName, string contactsFileName):
+		userManager(userFileName), contactManager(contactsFileName)	
+	{
 		userManager.uploadUsersFromTextFile();
 	};
 

@@ -83,3 +83,7 @@ void ContactManager::showAllContacts() {
     }
 }
 
+void ContactManager::clearVector() {
+
+    contacts.clear();
+}

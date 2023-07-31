@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
     OtherFunctions otherFunctions;
-    Database database("users.txt");
+    Database database("users.txt", "contacts.txt");
     char choice;
 
     while (true) {

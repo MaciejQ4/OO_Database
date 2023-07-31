@@ -16,13 +16,14 @@ class ContactManager
 	
 
 public:
-	 
+	ContactManager(string contactsTextFileName) : contactsTextFile (contactsTextFileName) {};
 	void setLoggedID(int id);
 	int getLoggedID();
 	void uploadContactsFromTextFile(int id);
 	void createContact();
 	int assignNewIDtoContact();
 	void showAllContacts();
+	void clearVector();
 
 };
 

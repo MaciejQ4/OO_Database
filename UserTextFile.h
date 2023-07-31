@@ -6,7 +6,7 @@
 
 class UsersTextFile
 {
-	const string usersTextFileName = "users.txt";
+	const string usersTextFileName;
 	fstream usersTextFile;
 
 	bool isUserFileEmpty();

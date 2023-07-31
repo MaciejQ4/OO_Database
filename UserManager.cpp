@@ -1,4 +1,5 @@
 #include "UserManager.h"
+#include "ContactManager.h"
 #include "OtherFunctions.h"
 OtherFunctions otherFunctions;
 
@@ -80,6 +81,8 @@ void UserManager::loginUser() {
 void UserManager::logOut() {
 
     loggedID = 0;
+    //contactManager.clearVector(); // jak to wyczyscic bez nowej instancji?
+    //ContactManager::clearVector();
 }
 
 
