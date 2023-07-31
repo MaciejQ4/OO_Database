@@ -7,6 +7,7 @@
 
 class ContactTextFile
 {
+	int latestContactsID;
 	const string contactsTextFileName;
 	fstream contactsTextFile;
 
