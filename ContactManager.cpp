@@ -9,8 +9,7 @@ Contact ContactManager::gatherCredentialsOfNewContact() {
     Contact contact;
     contact.setContactID(assignNewIDtoContact());
 
-    int id = getLoggedID();
-    contact.setUserIDofContact(id);
+    contact.setUserIDofContact(getLoggedID());
     
     cout << "Enter name: " << endl;
     string name = OtherFunctions::readLine();
@@ -45,9 +44,9 @@ int ContactManager::getLoggedID() {
     return loggedID;
 }
 
-void ContactManager::uploadContactsFromTextFile(int id) {
+void ContactManager::uploadContactsFromTextFile() {
 
-    contacts = contactsTextFile.uploadContactsFromTextFile(id);
+    contacts = contactsTextFile.uploadContactsFromTextFile(loggedID);
 }
 
 void ContactManager::createContact() {

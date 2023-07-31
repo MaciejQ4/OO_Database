@@ -15,9 +15,8 @@ void Database::createUser(){
 void Database::loginUser() {
 
 	userManager.loginUser();
-	int id = userManager.getLoggedID();
-	contactManager.setLoggedID(id);
-	contactManager.uploadContactsFromTextFile(id);
+	contactManager.setLoggedID(userManager.getLoggedID());
+	contactManager.uploadContactsFromTextFile();
 }
 
 
@@ -53,4 +52,5 @@ void Database::changePassword() {
 void Database::logOut() {
 
 	userManager.logOut();
+	contactManager.clearVector();
 }

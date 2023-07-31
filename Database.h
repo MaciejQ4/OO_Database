@@ -31,6 +31,7 @@ public:
 	void showAllContacts();
 	void changePassword();
 	void logOut();
+	
 
 };
 
