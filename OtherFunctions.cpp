@@ -1,4 +1,5 @@
 #include "OtherFunctions.h"
+#include "Contact.h"
 
 #include <iostream>
 #include <string.h>
@@ -30,3 +31,14 @@ char OtherFunctions::readChar() {
     } 
     return character;
 }
+
+void OtherFunctions::print(Contact contact) {
+    
+    cout << contact.getContactID() << "|";
+    cout << contact.getContactName() << "|";
+    cout << contact.getContactSurname() << "|";
+    cout << contact.getContactPhone() << "|";
+    cout << contact.getContactEmail() << "|";
+    cout << contact.getContactAddress() << "|" << endl;
+}
+

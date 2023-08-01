@@ -77,6 +77,8 @@ vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
         contact.setContactEmail(parts[5]);
         contact.setContactAddress(parts[6]);
 
+        if ((atoi(parts[0].c_str()) > IDofLastContact)) IDofLastContact = (atoi(parts[0].c_str()));
+        
         if(contact.getUserIDofContact() == loggedID)
         contacts.push_back(contact);
     }
@@ -84,7 +86,7 @@ vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
     return contacts;
 }
 
-int ContactTextFile::assignNewIDtoContact() {
+/*int ContactTextFile::assignNewIDtoContact() {
 
     int maxContactID = 0;
 
@@ -109,4 +111,9 @@ int ContactTextFile::assignNewIDtoContact() {
     }
     contactsTextFile.close();
     return maxContactID + 1;
+}*/
+
+int ContactTextFile::getIDofLastContact() {
+
+    return IDofLastContact;
 }

@@ -9,7 +9,7 @@
 
 class UserManager
 {
-	int loggedID;
+	int loggedID = 0;
 
 	vector <User> users;
 	UsersTextFile usersTextFile;

@@ -4,16 +4,17 @@
 #define CONTACTMANAGER_H
 
 #include "ContactTextFile.h"
+#include "OtherFunctions.h"
 
 class ContactManager
 {
-	int loggedID;
+	int loggedID = 0;
 	vector<Contact> contacts;
 
 	Contact gatherCredentialsOfNewContact();
 
 	ContactTextFile contactsTextFile;
-	
+	OtherFunctions otherFunctions;
 
 public:
 

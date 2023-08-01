@@ -9,6 +9,8 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "Contact.h"
+
 using namespace std;
 
 
@@ -19,6 +21,7 @@ public:
 
 	static string readLine();
 	static char readChar();
+	void print(Contact contact);
 
 };
 

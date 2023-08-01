@@ -7,7 +7,9 @@
 Contact ContactManager::gatherCredentialsOfNewContact() {
 
     Contact contact;
-    contact.setContactID(assignNewIDtoContact());
+    //contact.setContactID(assignNewIDtoContact());
+    contact.setContactID(contactsTextFile.getIDofLastContact()+1);
+
 
     contact.setUserIDofContact(getLoggedID());
     
@@ -59,25 +61,20 @@ void ContactManager::createContact() {
 
 }
 
-int ContactManager::assignNewIDtoContact() {
-
-    int newID = contactsTextFile.assignNewIDtoContact();
-    return newID;
-}
+//int ContactManager::assignNewIDtoContact() {
+//
+//    int newID = contactsTextFile.assignNewIDtoContact();
+//    return newID;
+//}
 
 void ContactManager::showAllContacts() {
 
     if (contacts.empty()) { cout << "No contacts yet. "; system("pause"); }
 
     else {
-        for (int i = 0; i < contacts.size(); i++) {
-            cout << contacts[i].getContactID() << "|";
-            cout << contacts[i].getContactName() << "|";
-            cout << contacts[i].getContactSurname() << "|";
-            cout << contacts[i].getContactPhone() << "|";
-            cout << contacts[i].getContactEmail() << "|";
-            cout << contacts[i].getContactAddress() << "|" << endl;
-        }
+        for (Contact contact : contacts)
+            otherFunctions.print(contact);
+ 
         system("pause");
     }
 }
