@@ -21,7 +21,6 @@ public:
 
 	static string readLine();
 	static char readChar();
-	void print(Contact contact);
 
 };
 

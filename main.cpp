@@ -8,7 +8,6 @@ using namespace std;
 
 int main()
 {
-    OtherFunctions otherFunctions;
     Database database("users.txt", "contacts.txt");
     char choice;
 
@@ -22,7 +21,7 @@ int main()
             cout << "2. Login \n";
             cout << "3. Show all users \n";
             
-            choice = otherFunctions.readChar();
+            choice = OtherFunctions::readChar();
 
             switch (choice) {
             case '1': database.createUser();              break;
@@ -41,7 +40,7 @@ int main()
             cout << "8. Sign out"               << endl << endl;
             cout << "9. Exit"                           << endl;
             
-            choice = otherFunctions.readChar();
+            choice = OtherFunctions::readChar();
             switch (choice) {
 
             case '1': database.createContact();           break;

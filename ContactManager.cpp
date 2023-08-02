@@ -1,17 +1,11 @@
-#include "OtherFunctions.h"
 #include "ContactManager.h"
 
-
-//OtherFunctions otherFunctions;
 
 Contact ContactManager::gatherCredentialsOfNewContact() {
 
     Contact contact;
-    //contact.setContactID(assignNewIDtoContact());
     contact.setContactID(contactsTextFile.getIDofLastContact()+1);
-
-
-    contact.setUserIDofContact(getLoggedID());
+    contact.setUserIDofContact(loggedID);
     
     cout << "Enter name: " << endl;
     string name = OtherFunctions::readLine();
@@ -41,10 +35,10 @@ void ContactManager::setLoggedID(int id) {
     loggedID = id;
 }
 
-int ContactManager::getLoggedID() {
-
-    return loggedID;
-}
+//int ContactManager::getLoggedID() {
+//
+//    return loggedID;
+//}
 
 void ContactManager::uploadContactsFromTextFile() {
 
@@ -61,19 +55,13 @@ void ContactManager::createContact() {
 
 }
 
-//int ContactManager::assignNewIDtoContact() {
-//
-//    int newID = contactsTextFile.assignNewIDtoContact();
-//    return newID;
-//}
-
 void ContactManager::showAllContacts() {
 
     if (contacts.empty()) { cout << "No contacts yet. "; system("pause"); }
 
     else {
         for (Contact contact : contacts)
-            otherFunctions.print(contact);
+            print(contact);
  
         system("pause");
     }
@@ -82,4 +70,15 @@ void ContactManager::showAllContacts() {
 void ContactManager::clearVector() {
 
     contacts.clear();
+    
+}
+
+void ContactManager::print(Contact contact) {
+
+    cout << contact.getContactID() << "|";
+    cout << contact.getContactName() << "|";
+    cout << contact.getContactSurname() << "|";
+    cout << contact.getContactPhone() << "|";
+    cout << contact.getContactEmail() << "|";
+    cout << contact.getContactAddress() << "|" << endl;
 }

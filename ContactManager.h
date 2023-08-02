@@ -14,7 +14,6 @@ class ContactManager
 	Contact gatherCredentialsOfNewContact();
 
 	ContactTextFile contactsTextFile;
-	OtherFunctions otherFunctions;
 
 public:
 
@@ -23,7 +22,7 @@ public:
 	int getLoggedID();
 	void uploadContactsFromTextFile();
 	void createContact();
-	int assignNewIDtoContact();
+	void print(Contact contact);
 	void showAllContacts();
 	void clearVector();
 

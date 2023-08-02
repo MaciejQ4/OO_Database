@@ -11,7 +11,6 @@ class Database
 	UserManager userManager;
 	ContactManager contactManager;
 
-
 public:
 
 	Database(string userFileName, string contactsFileName):
@@ -24,8 +23,6 @@ public:
 	void createUser();
 	void loginUser();
 	void showAllUsers();
-	void setLoggedID(int id);
-
 
 	void createContact();
 	void showAllContacts();

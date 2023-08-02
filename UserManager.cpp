@@ -1,7 +1,6 @@
 #include "UserManager.h"
 #include "ContactManager.h"
 #include "OtherFunctions.h"
-OtherFunctions otherFunctions;
 
 User UserManager::gatherCredentialsOfNewUser() {
 
@@ -9,11 +8,11 @@ User UserManager::gatherCredentialsOfNewUser() {
     user.setUserID(assignIDtoNewUser());
 
     cout << "Enter login: " << endl;
-    string login = otherFunctions.readLine();
+    string login = OtherFunctions::readLine();
     user.setUserLogin(login);
 
     cout << "Enter password: " << endl;
-    string password = otherFunctions.readLine();
+    string password = OtherFunctions::readLine();
     user.setUserPassword(password);
 
     return user;
@@ -62,9 +61,9 @@ void UserManager::loginUser() {
 
     
     cout << "Enter login" << endl;
-    string login = otherFunctions.readLine();
+    string login = OtherFunctions::readLine();
     cout << "Enter password" << endl;
-    string password = otherFunctions.readLine();
+    string password = OtherFunctions::readLine();
 
     for (size_t i = 0; i < users.size(); i++) {
         if (users[i].getUserLogin() == login && users[i].getUserPassword() == password) {
@@ -81,8 +80,8 @@ void UserManager::loginUser() {
 void UserManager::logOut() {
 
     loggedID = 0;
-    //contactManager.clearVector(); // jak to wyczyscic bez nowej instancji?
-    //ContactManager::clearVector();
+    ContactManager::clearVector();
+
 }
 
 
@@ -117,7 +116,7 @@ void UserManager::showAllUsers() {
 void UserManager::changePassword() {
 
     cout << "Enter new password" << endl;
-    string newPassword  = otherFunctions.readLine();
+    string newPassword  = OtherFunctions::readLine();
   
     for (User& user: users) {
 
