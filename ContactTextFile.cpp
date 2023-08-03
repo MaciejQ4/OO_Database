@@ -117,3 +117,9 @@ int ContactTextFile::getIDofLastContact() {
 
     return IDofLastContact;
 }
+
+void ContactTextFile::updateIDofLastContact(int IDofLastContact) {
+    
+    IDofLastContact += 1;
+  
+}

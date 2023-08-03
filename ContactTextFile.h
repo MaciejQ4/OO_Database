@@ -7,7 +7,7 @@
 
 class ContactTextFile
 {
-	int IDofLastContact = 0;
+	int IDofLastContact;
 	const string contactsTextFileName;
 	fstream contactsTextFile;
 
@@ -15,11 +15,13 @@ class ContactTextFile
 	string createLineOfData(Contact contact);
 
 public:
-	ContactTextFile(string NAMEOFCONTACTSTEXTFILE) : contactsTextFileName(NAMEOFCONTACTSTEXTFILE) {};
+	ContactTextFile(string NAMEOFCONTACTSTEXTFILE) : contactsTextFileName(NAMEOFCONTACTSTEXTFILE) {
+		IDofLastContact = 0;
+	};
 	void appendContactToTextFile(Contact contact);
 	vector<Contact> uploadContactsFromTextFile(int loggedID);
-	//int assignNewIDtoContact();
 	int getIDofLastContact();
+	void updateIDofLastContact(int IDofLastContact);
 };
 
 #endif

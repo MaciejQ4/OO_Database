@@ -9,13 +9,22 @@
 class Database
 {
 	UserManager userManager;
-	ContactManager contactManager;
+	ContactManager *contactManager;
+	const string NAME_OF_CONTACT_TEXTFILE;
 
 public:
 
 	Database(string userFileName, string contactsFileName):
-		userManager(userFileName), contactManager(contactsFileName)	
-	{};
+		userManager(userFileName), NAME_OF_CONTACT_TEXTFILE(contactsFileName)
+	{
+		contactManager = NULL;
+	};
+
+	~Database()
+	{
+		delete contactManager;
+		contactManager = NULL;
+	}
 
 	bool isUserLogged();
 	void createUser();

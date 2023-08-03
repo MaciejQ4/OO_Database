@@ -13,8 +13,12 @@ void Database::createUser(){
 void Database::loginUser() {
 
 	userManager.loginUser();
-	contactManager.setLoggedID(userManager.getLoggedID());
-	contactManager.uploadContactsFromTextFile();
+	//contactManager.setLoggedID(userManager.getLoggedID());
+	//contactManager.uploadContactsFromTextFile();
+	if (userManager.isUserLogged()) {
+		contactManager = new ContactManager(NAME_OF_CONTACT_TEXTFILE, userManager.getLoggedID());
+	}
+
 }
 
 void Database::showAllUsers() {
@@ -25,12 +29,12 @@ void Database::showAllUsers() {
 
 void Database::createContact() {
 
-	contactManager.createContact();
+	contactManager->createContact();
 }
 
 void Database::showAllContacts() {
 
-	contactManager.showAllContacts();
+	contactManager->showAllContacts();
 }
 
 void Database::changePassword() {
@@ -41,5 +45,9 @@ void Database::changePassword() {
 void Database::logOut() {
 
 	userManager.logOut();
-	contactManager.clearVector();
+	//contactManager->clearVector(); // tak u artura w 2sem
+	delete contactManager;
+	contactManager = NULL;
+
+
 }

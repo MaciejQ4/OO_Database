@@ -17,6 +17,17 @@ class Contact
 
 public:
 
+	Contact(int id = 0, int userid = 0, string name = "", string surname = "", string phone = "", string email = "", string address = "")
+	{
+		this->id = id;
+		this->userid = userid;
+		this->name = name;
+		this->surname = surname;
+		this->phone = phone;
+		this->email = email;
+		this->address = address;
+
+	}
 	void setContactID(int newID);
 	void setUserIDofContact(int loggedID);
 	void setContactName(string newname);

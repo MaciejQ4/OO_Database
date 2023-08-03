@@ -32,7 +32,7 @@ Contact ContactManager::gatherCredentialsOfNewContact() {
 
 void ContactManager::setLoggedID(int id) {
 
-    loggedID = id;
+    loggedID = id; // const loggedID nie moze byc bo wtedy tu jest blad
 }
 
 //int ContactManager::getLoggedID() {
@@ -51,6 +51,8 @@ void ContactManager::createContact() {
     Contact contact = gatherCredentialsOfNewContact();
     contacts.push_back(contact);
     contactsTextFile.appendContactToTextFile(contact);
+    contactsTextFile.updateIDofLastContact(contactsTextFile.getIDofLastContact()); //
+
     cout << "User added succesfully. ";  system("pause");
 
 }
