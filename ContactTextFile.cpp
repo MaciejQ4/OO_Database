@@ -37,6 +37,7 @@ void ContactTextFile::appendContactToTextFile(Contact contact) {
         else                           contactsTextFile << endl << line;
 
         contactsTextFile.close();
+        IDofLastContact++;
     }
     else cout << "failed";
 }
@@ -84,42 +85,9 @@ vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
     }
     contactsTextFile.close();
     return contacts;
-}
-
-/*int ContactTextFile::assignNewIDtoContact() {
-
-    int maxContactID = 0;
-
-    ifstream contactsTextFile(contactsTextFileName);
-
-    if (!contactsTextFile.good()) {
-        cout << "Failed to open contacts file. assignID function in creating contact" << endl;
-        exit(0);
-    }
-
-    string line;
-    while (getline(contactsTextFile, line)) {
-        stringstream ss(line);
-        string contactIDStr;
-
-        getline(ss, contactIDStr, '|');
-
-        int contactID = atoi(contactIDStr.c_str());
-        if (contactID > maxContactID) {
-            maxContactID = contactID;
-        }
-    }
-    contactsTextFile.close();
-    return maxContactID + 1;
-}*/
+} 
 
 int ContactTextFile::getIDofLastContact() {
 
     return IDofLastContact;
-}
-
-void ContactTextFile::updateIDofLastContact(int IDofLastContact) {
-    
-    IDofLastContact += 1;
-  
 }

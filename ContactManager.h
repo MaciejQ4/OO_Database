@@ -8,7 +8,7 @@
 
 class ContactManager
 {
-	int loggedID = 0; // nie moge dac const
+	const int LOGGED_ID = 0;
 	vector<Contact> contacts;
 
 	Contact gatherCredentialsOfNewContact();
@@ -18,7 +18,7 @@ class ContactManager
 public:
 
 	ContactManager(string contactsTextFileName, int loggedID)
-	 : contactsTextFile (contactsTextFileName), loggedID(loggedID) 
+	 : contactsTextFile (contactsTextFileName), LOGGED_ID(loggedID) 
 	{
 		contacts = contactsTextFile.uploadContactsFromTextFile(loggedID);
 	};

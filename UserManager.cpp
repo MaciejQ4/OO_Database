@@ -102,7 +102,6 @@ void UserManager::showAllUsers() {
     }
 }
 
-
 void UserManager::changePassword() {
 
     cout << "Enter new password" << endl;

@@ -21,7 +21,6 @@ public:
 	void appendContactToTextFile(Contact contact);
 	vector<Contact> uploadContactsFromTextFile(int loggedID);
 	int getIDofLastContact();
-	void updateIDofLastContact(int IDofLastContact);
 };
 
 #endif

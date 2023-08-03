@@ -4,8 +4,8 @@
 Contact ContactManager::gatherCredentialsOfNewContact() {
 
     Contact contact;
-    contact.setContactID(contactsTextFile.getIDofLastContact()+1);
-    contact.setUserIDofContact(loggedID);
+    contact.setContactID(contactsTextFile.getIDofLastContact() + 1);
+    contact.setUserIDofContact(LOGGED_ID);
     
     cout << "Enter name: " << endl;
     string name = OtherFunctions::readLine();
@@ -30,19 +30,9 @@ Contact ContactManager::gatherCredentialsOfNewContact() {
     return contact;
 }
 
-void ContactManager::setLoggedID(int id) {
-
-    loggedID = id; // const loggedID nie moze byc bo wtedy tu jest blad
-}
-
-//int ContactManager::getLoggedID() {
-//
-//    return loggedID;
-//}
-
 void ContactManager::uploadContactsFromTextFile() {
 
-    contacts = contactsTextFile.uploadContactsFromTextFile(loggedID);
+    contacts = contactsTextFile.uploadContactsFromTextFile(LOGGED_ID);
 }
 
 void ContactManager::createContact() {
@@ -51,8 +41,6 @@ void ContactManager::createContact() {
     Contact contact = gatherCredentialsOfNewContact();
     contacts.push_back(contact);
     contactsTextFile.appendContactToTextFile(contact);
-    contactsTextFile.updateIDofLastContact(contactsTextFile.getIDofLastContact()); //
-
     cout << "User added succesfully. ";  system("pause");
 
 }
