@@ -1,5 +1,4 @@
 #include "UserManager.h"
-#include "ContactManager.h"
 #include "OtherFunctions.h"
 
 User UserManager::gatherCredentialsOfNewUser() {
@@ -80,8 +79,6 @@ void UserManager::loginUser() {
 void UserManager::logOut() {
 
     loggedID = 0;
-    ContactManager::clearVector();
-
 }
 
 
