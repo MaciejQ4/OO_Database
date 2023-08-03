@@ -15,9 +15,7 @@ public:
 
 	Database(string userFileName, string contactsFileName):
 		userManager(userFileName), contactManager(contactsFileName)	
-	{
-		userManager.uploadUsersFromTextFile();
-	};
+	{};
 
 	bool isUserLogged();
 	void createUser();

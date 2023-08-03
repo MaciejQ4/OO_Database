@@ -44,12 +44,6 @@ int UserManager::getLoggedID() {
     return loggedID;
 }
 
-void UserManager::uploadUsersFromTextFile() {
-
-    users = usersTextFile.uploadUsersFromTextFile();
-
-}
-
 bool UserManager::isUserLogged() {
 
     if (loggedID > 0) return true;
@@ -96,7 +90,6 @@ void UserManager::createUser() {
 
 void UserManager::showAllUsers() {
 
-    uploadUsersFromTextFile();
     if (users.empty()) { cout << "No users yet. "; system("pause"); }
 
     else {

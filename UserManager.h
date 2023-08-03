@@ -20,11 +20,13 @@ class UserManager
 	
 
 public:
-	UserManager(string usersTextFileName) : usersTextFile (usersTextFileName) {};
+	UserManager(string usersTextFileName) : usersTextFile (usersTextFileName) {
+		users = usersTextFile.uploadUsersFromTextFile();
+	};
 
 	void setLoggedID(int id);
 	int getLoggedID();
-	void uploadUsersFromTextFile();
+
 	bool isUserLogged();
 	void loginUser();
 	void logOut();
