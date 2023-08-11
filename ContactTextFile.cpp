@@ -95,20 +95,20 @@ int ContactTextFile::getIDofLastContact() {
 void ContactTextFile::deleteContactFromTextfile(int deletionID) {
 
 
-    fstream contactsFile;
-    contactsFile.open("contacts.txt", ios::in || ios::app);
-    if (!contactsFile.good()) {
-        cout << "failed. delete contact funtion"; system("pause");
+    contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
+    
+    if (!contactsTextFile.good()) {
+        cout << "Failed to open textfile for deletion "; system("pause");
     }
 
-    fstream contactsFile2;
-    contactsFile2.open("contacts2.txt", ios::out | ios::trunc);
-    if (!contactsFile2.good()) {
-        cout << "failed. delte contact funtion. creating second file"; system("pause");
+    fstream contactsTextFile2;
+    contactsTextFile2.open("contacts2.txt", ios::out | ios::trunc);
+    if (!contactsTextFile2.good()) {
+        cout << "Failed to open temporary textfile for deletion"; system("pause");
     }
 
     string line;
-    while (getline(contactsFile, line)) {
+    while (getline(contactsTextFile, line)) {
 
         string str = line;
         string parts[7];
@@ -126,20 +126,23 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
 
         if (parts[0] != to_string(deletionID)) {           //// if doenst match, rewrite line // if entered id doesnt match 
             for (int i = 0; i < 7; i++) {
-                contactsFile2 << parts[i] << "|";
+                contactsTextFile2 << parts[i] << "|";
             }
-            contactsFile2 << endl;
+            contactsTextFile2 << endl;
         }
     }
 
-    contactsFile.close();
-    contactsFile2.close();
+    contactsTextFile.close();
+    contactsTextFile2.close();
 
-    if (remove("contacts2.txt") != 0) {
+    string temporaryFile = "contacts2.txt";
+    string destinationFile = contactsTextFileName;
+    
+    if (remove(destinationFile.c_str()) != 0) {
         cout << "Failed to delete contacts file. deleteContact function." << endl; system("pause");
     }
 
-    if (rename("contacts2.txt", "contacts.txt") != 0) {
+    if (rename(temporaryFile.c_str(), destinationFile.c_str()) != 0) {
         cout << "Failed to rename temporary file. deleteContact function." << endl; system("pause");
     }
 
