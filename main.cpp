@@ -36,6 +36,7 @@ int main()
             cout << " USER MENU "               << endl << endl;
             cout << "1. Create a contact"               << endl;
             cout << "4. Show all contacts in database"  << endl;
+            cout << "5. Delete a contact" << endl;
             cout << "7. Change password"                << endl;
             cout << "8. Sign out"               << endl << endl;
             cout << "9. Exit"                           << endl;
@@ -45,6 +46,7 @@ int main()
 
             case '1': database.createContact();           break;
             case '4': database.showAllContacts();         break;
+            case '5': database.deleteContact();           break;
             case '7': database.changePassword();          break;
             case '8': database.logOut();                  break;
             case '9': exit(0);                            break;

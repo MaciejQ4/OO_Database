@@ -33,6 +33,11 @@ void Database::showAllContacts() {
 	contactManager->showAllContacts();
 }
 
+void Database::deleteContact() {
+
+	contactManager->deleteContact();
+}
+
 void Database::changePassword() {
 
 	userManager.changePassword();

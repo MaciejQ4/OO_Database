@@ -15,12 +15,13 @@ class ContactTextFile
 	string createLineOfData(Contact contact);
 
 public:
-	ContactTextFile(string NAMEOFCONTACTSTEXTFILE) : contactsTextFileName(NAMEOFCONTACTSTEXTFILE) {
+	ContactTextFile(string NAME_OF_CONTACTS_TEXTFILE) : contactsTextFileName(NAME_OF_CONTACTS_TEXTFILE) {
 		IDofLastContact = 0;
 	};
 	void appendContactToTextFile(Contact contact);
 	vector<Contact> uploadContactsFromTextFile(int loggedID);
 	int getIDofLastContact();
+	void deleteContactFromTextfile(int deletionID);
 };
 
 #endif

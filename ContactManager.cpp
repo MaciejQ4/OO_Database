@@ -57,6 +57,42 @@ void ContactManager::showAllContacts() {
     }
 }
 
+void ContactManager::deleteContact() {
+
+    if (contacts.empty()) { cout << "No contacts yet. "; system("pause"); }
+
+    else {
+        for (Contact contact : contacts)
+            print(contact);
+
+        cout << "Delete contact with which ID?. ";
+        string ID = OtherFunctions::readLine();
+        int deletionID = stoi(ID);
+
+        cout << "About to delete account with ID: " << ID << "press 'y' to confirm ";
+        char confirm = OtherFunctions::readChar();
+        
+        if (deletionID <= contactsTextFile.getIDofLastContact() && confirm == 'y' || confirm == 'Y')
+        {
+ 
+            for (vector<Contact>::iterator itr = contacts.begin(); itr != contacts.end();) {
+                if (itr->getContactID() == deletionID) {
+                    itr = contacts.erase(itr);
+                }
+                else {
+                    ++itr; 
+                }
+            }
+            contactsTextFile.deleteContactFromTextfile(deletionID);
+        }
+        else cout << "Failed to delete contact.";
+    }
+    
+    
+}
+
+
+
 void ContactManager::clearVector() {
 
     contacts.clear();

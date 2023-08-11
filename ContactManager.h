@@ -29,6 +29,7 @@ public:
 	void createContact();
 	void print(Contact contact);
 	void showAllContacts();
+	void deleteContact();
 	void clearVector();
 
 };

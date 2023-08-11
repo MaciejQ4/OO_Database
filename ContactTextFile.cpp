@@ -91,3 +91,59 @@ int ContactTextFile::getIDofLastContact() {
 
     return IDofLastContact;
 }
+
+void ContactTextFile::deleteContactFromTextfile(int deletionID) {
+
+
+    fstream contactsFile;
+    contactsFile.open("contacts.txt", ios::in || ios::app);
+    if (!contactsFile.good()) {
+        cout << "failed. delete contact funtion"; system("pause");
+    }
+
+    fstream contactsFile2;
+    contactsFile2.open("contacts2.txt", ios::out | ios::trunc);
+    if (!contactsFile2.good()) {
+        cout << "failed. delte contact funtion. creating second file"; system("pause");
+    }
+
+    string line;
+    while (getline(contactsFile, line)) {
+
+        string str = line;
+        string parts[7];
+
+        stringstream ss(str);
+
+        int i = 0;
+        while (ss.good() && i < 7) {
+            string substr;
+            getline(ss, substr, '|');
+            parts[i] = substr;
+            i++;
+        }
+        i = 0;
+
+        if (parts[0] != to_string(deletionID)) {           //// if doenst match, rewrite line // if entered id doesnt match 
+            for (int i = 0; i < 7; i++) {
+                contactsFile2 << parts[i] << "|";
+            }
+            contactsFile2 << endl;
+        }
+    }
+
+    contactsFile.close();
+    contactsFile2.close();
+
+    if (remove("contacts2.txt") != 0) {
+        cout << "Failed to delete contacts file. deleteContact function." << endl; system("pause");
+    }
+
+    if (rename("contacts2.txt", "contacts.txt") != 0) {
+        cout << "Failed to rename temporary file. deleteContact function." << endl; system("pause");
+    }
+
+    cout << "Contact deleted successfully." << endl;
+    system("pause");
+
+}
