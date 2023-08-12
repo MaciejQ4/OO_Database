@@ -22,6 +22,7 @@ public:
 	vector<Contact> uploadContactsFromTextFile(int loggedID);
 	int getIDofLastContact();
 	void deleteContactFromTextfile(int deletionID);
+	void editContactInTextFile(Contact contact);
 };
 
 #endif

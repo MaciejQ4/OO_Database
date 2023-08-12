@@ -28,8 +28,11 @@ public:
 	void uploadContactsFromTextFile();
 	void createContact();
 	void print(Contact contact);
+	void searchAndShowByName();
+	void searchAndShowBySurname();
 	void showAllContacts();
 	void deleteContact();
+	void editContact();
 	void clearVector();
 
 };

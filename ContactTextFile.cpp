@@ -124,14 +124,13 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
         }
         i = 0;
 
-        if (parts[0] != to_string(deletionID)) {           //// if doenst match, rewrite line // if entered id doesnt match 
-            for (int i = 0; i < 7; i++) {
-                contactsTextFile2 << parts[i] << "|";
+        if (parts[0] != to_string(deletionID)) {  //parts[0] is the ID/ if doenst match, rewrite line // if entered id doesnt match 
+            for (int j = 0; j < 7; j++) {
+                contactsTextFile2 << parts[j] << "|";
             }
             contactsTextFile2 << endl;
         }
     }
-
     contactsTextFile.close();
     contactsTextFile2.close();
 
@@ -139,14 +138,81 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
     string destinationFile = contactsTextFileName;
     
     if (remove(destinationFile.c_str()) != 0) {
-        cout << "Failed to delete contacts file. deleteContact function." << endl; system("pause");
+        cout << "Failed to delete contacts file after closing the file." << endl; system("pause");
     }
 
     if (rename(temporaryFile.c_str(), destinationFile.c_str()) != 0) {
-        cout << "Failed to rename temporary file. deleteContact function." << endl; system("pause");
+        cout << "Failed to rename temporary file after closing the file." << endl; system("pause");
     }
 
-    cout << "Contact deleted successfully." << endl;
-    system("pause");
+    cout << "Contact deleted successfully."; system("pause");
+
+}
+
+void ContactTextFile::editContactInTextFile(Contact contact) {
+
+    contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
+
+    if (!contactsTextFile.good()) {
+        cout << "Failed to open textfile for edition "; system("pause");
+    }
+
+    fstream contactsTextFile2;
+    contactsTextFile2.open("contacts2.txt", ios::out | ios::trunc);
+    if (!contactsTextFile2.good()) {
+        cout << "Failed to open temporary textfile for edition"; system("pause");
+    }
+
+    string line;
+    while (getline(contactsTextFile, line)) {
+        string str = line;
+        string parts[7];
+
+        stringstream ss(str);
+
+        int i = 0;
+        while (ss.good() && i < 7) {
+            string substr;
+            getline(ss, substr, '|');
+            parts[i] = substr;
+            i++;
+        }
+        i = 0;
+
+        if (parts[0] != to_string(contact.getContactID()))            //// if doenst match, rewrite line 
+            contactsTextFile2 << line << endl;
+
+        if (parts[0] == to_string(contact.getContactID())) {
+
+           // for (Contact& contact : contacts) {
+
+                //if (contact.id == ID) {
+
+                    contactsTextFile2 << contact.getContactID() << "|";
+                    contactsTextFile2 << contact.getUserIDofContact() << "|";
+                    contactsTextFile2 << contact.getContactName() << "|";
+                    contactsTextFile2 << contact.getContactSurname() << "|";
+                    contactsTextFile2 << contact.getContactPhone() << "|";
+                    contactsTextFile2 << contact.getContactEmail() << "|";
+                    contactsTextFile2 << contact.getContactAddress() << "|" << endl;
+                //}
+            //}
+        }
+    }
+    contactsTextFile.close();
+    contactsTextFile2.close();
+
+    string temporaryFile = "contacts2.txt";
+    string destinationFile = contactsTextFileName;
+
+    if (remove(destinationFile.c_str()) != 0) {
+        cout << "Failed to edit contact file after closing the file." << endl; system("pause");
+    }
+
+    if (rename(temporaryFile.c_str(), destinationFile.c_str()) != 0) {
+        cout << "Failed to rename temporary file after closing the file in edit function" << endl; system("pause");
+    }
+
+    cout << "Contact edited successfully."; system("pause");
 
 }

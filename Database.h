@@ -32,10 +32,13 @@ public:
 	void showAllUsers();
 
 	void createContact();
+	void searchAndShowByName();
+	void searchAndShowBySurname();
 	void showAllContacts();
 	void changePassword();
 	void logOut();
 	void deleteContact();
+	void editContact();
 	
 
 };

@@ -28,6 +28,16 @@ void Database::createContact() {
 	contactManager->createContact();
 }
 
+void Database::searchAndShowByName() {
+
+	contactManager->searchAndShowByName();
+}
+
+void Database::searchAndShowBySurname() {
+
+	contactManager->searchAndShowBySurname();
+}
+
 void Database::showAllContacts() {
 
 	contactManager->showAllContacts();
@@ -36,6 +46,11 @@ void Database::showAllContacts() {
 void Database::deleteContact() {
 
 	contactManager->deleteContact();
+}
+
+void Database::editContact() {
+
+	contactManager->editContact();
 }
 
 void Database::changePassword() {

@@ -35,8 +35,11 @@ int main()
             system("cls");
             cout << " USER MENU "               << endl << endl;
             cout << "1. Create a contact"               << endl;
+            cout << "2. Search contacts by name" << endl;
+            cout << "3. Search contacts by surname" << endl;
             cout << "4. Show all contacts in database"  << endl;
             cout << "5. Delete a contact" << endl;
+            cout << "6. Edit a contact" << endl;
             cout << "7. Change password"                << endl;
             cout << "8. Sign out"               << endl << endl;
             cout << "9. Exit"                           << endl;
@@ -45,8 +48,11 @@ int main()
             switch (choice) {
 
             case '1': database.createContact();           break;
+            case '2': database.searchAndShowByName();           break;
+            case '3': database.searchAndShowBySurname();           break;
             case '4': database.showAllContacts();         break;
             case '5': database.deleteContact();           break;
+            case '6': database.editContact();             break;
             case '7': database.changePassword();          break;
             case '8': database.logOut();                  break;
             case '9': exit(0);                            break;
