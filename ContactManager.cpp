@@ -1,6 +1,5 @@
 #include "ContactManager.h"
 
-
 Contact ContactManager::gatherCredentialsOfNewContact() {
 
     Contact contact;
@@ -9,10 +8,12 @@ Contact ContactManager::gatherCredentialsOfNewContact() {
     
     cout << "Enter name: " << endl;
     string name = OtherFunctions::readLine();
+    name = OtherFunctions::uppercase(name);
     contact.setContactName(name);
 
     cout << "Enter surname: " << endl;
     string surname = OtherFunctions::readLine();
+    surname = OtherFunctions::uppercase(surname);
     contact.setContactSurname(surname);
 
     cout << "Enter phone: " << endl;
@@ -37,12 +38,10 @@ void ContactManager::uploadContactsFromTextFile() {
 
 void ContactManager::createContact() {
 
-
     Contact contact = gatherCredentialsOfNewContact();
     contacts.push_back(contact);
     contactsTextFile.appendContactToTextFile(contact);
     cout << "User added succesfully. ";  system("pause");
-
 }
 
 void ContactManager::showAllContacts() {
@@ -64,6 +63,7 @@ void ContactManager::searchAndShowByName() {
     }
     cout << "Enter name: ";
     string keyword = OtherFunctions::readLine();
+    keyword = OtherFunctions::uppercase(keyword);
 
     cout << "Contacts containing the name " << keyword << ":" << endl << endl;
     for (Contact contact : contacts) {
@@ -80,6 +80,7 @@ void ContactManager::searchAndShowBySurname() {
     }
     cout << "Enter surname: ";
     string keyword = OtherFunctions::readLine();
+    keyword = OtherFunctions::uppercase(keyword);
 
     cout << "Contacts containing the surname " << keyword << ":" << endl << endl;
     for (Contact contact : contacts) {
@@ -106,14 +107,11 @@ void ContactManager::deleteContact() {
         
         if (deletionID <= contactsTextFile.getIDofLastContact() && confirm == 'y' || confirm == 'Y')
         {
- 
             for (vector<Contact>::iterator itr = contacts.begin(); itr != contacts.end();) {
                 if (itr->getContactID() == deletionID) {
                     itr = contacts.erase(itr);
                 }
-                else {
-                    ++itr; 
-                }
+                else ++itr; 
             }
             contactsTextFile.deleteContactFromTextfile(deletionID);
         }
@@ -145,15 +143,15 @@ void ContactManager::editContact() {
 
             cout << "Enter the new value: ";
             string newValue = OtherFunctions::readLine();
-            
+            newValue = OtherFunctions::uppercase(newValue);
 
             switch (choice) {
-            case '1': contact.setContactName(newValue); break;
-            case '2': contact.setContactSurname(newValue); break;
-            case '3': contact.setContactPhone(newValue); break;
-            case '4': contact.setContactEmail(newValue); break;
-            case '5': contact.setContactAddress(newValue); break;
-            default: cout << "invalid input"; system("pause"); break;
+            case '1': contact.setContactName(newValue);         break;
+            case '2': contact.setContactSurname(newValue);      break;
+            case '3': contact.setContactPhone(newValue);        break;
+            case '4': contact.setContactEmail(newValue);        break;
+            case '5': contact.setContactAddress(newValue);      break;
+            default: cout << "invalid input"; system("pause");  break;
             }
             contactsTextFile.editContactInTextFile(contact);
         }

@@ -10,7 +10,6 @@ class ContactTextFile
 	int IDofLastContact;
 	const string contactsTextFileName;
 	fstream contactsTextFile;
-
 	bool isContactsTextFileEmpty();
 	string createLineOfData(Contact contact);
 

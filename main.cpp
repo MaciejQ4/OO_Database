@@ -16,14 +16,14 @@ int main()
         if (database.isUserLogged() == false) {
 
             system("cls");
-            cout << "Main menu\n";
-            cout << "1. Create new user \n";
-            cout << "2. Login \n";
-            cout << "3. Show all users \n";
+            cout << "Main menu"          << endl;
+            cout << "1. Create new user" << endl;;
+            cout << "2. Login"           << endl;
+            cout << "3. Show all users"  << endl;
             
             choice = OtherFunctions::readChar();
-
             switch (choice) {
+            
             case '1': database.createUser();              break;
             case '2': database.loginUser();               break;
             case '3': database.showAllUsers();            break; 
@@ -35,21 +35,21 @@ int main()
             system("cls");
             cout << " USER MENU "               << endl << endl;
             cout << "1. Create a contact"               << endl;
-            cout << "2. Search contacts by name" << endl;
-            cout << "3. Search contacts by surname" << endl;
+            cout << "2. Search contacts by name"        << endl;
+            cout << "3. Search contacts by surname"     << endl;
             cout << "4. Show all contacts in database"  << endl;
-            cout << "5. Delete a contact" << endl;
-            cout << "6. Edit a contact" << endl;
+            cout << "5. Delete a contact"               << endl;
+            cout << "6. Edit a contact"                 << endl;
             cout << "7. Change password"                << endl;
-            cout << "8. Sign out"               << endl << endl;
+            cout << "8. Sign out"                       << endl;
             cout << "9. Exit"                           << endl;
             
             choice = OtherFunctions::readChar();
             switch (choice) {
 
             case '1': database.createContact();           break;
-            case '2': database.searchAndShowByName();           break;
-            case '3': database.searchAndShowBySurname();           break;
+            case '2': database.searchAndShowByName();     break;
+            case '3': database.searchAndShowBySurname();  break;
             case '4': database.showAllContacts();         break;
             case '5': database.deleteContact();           break;
             case '6': database.editContact();             break;

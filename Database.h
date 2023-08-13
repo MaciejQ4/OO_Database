@@ -30,7 +30,6 @@ public:
 	void createUser();
 	void loginUser();
 	void showAllUsers();
-
 	void createContact();
 	void searchAndShowByName();
 	void searchAndShowBySurname();
@@ -40,7 +39,6 @@ public:
 	void deleteContact();
 	void editContact();
 	
-
 };
 
 #endif

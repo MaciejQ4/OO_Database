@@ -8,7 +8,6 @@ class UsersTextFile
 {
 	const string USERS_TEXTFILE_NAME;
 	fstream usersTextFile;
-
 	bool isUserFileEmpty();
 
 public:

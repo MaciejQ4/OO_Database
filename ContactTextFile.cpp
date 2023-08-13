@@ -1,6 +1,5 @@
 #include "ContactTextFile.h"
 
-
 bool ContactTextFile::isContactsTextFileEmpty() {
 
     contactsTextFile.seekg(0, ios::end);
@@ -25,7 +24,6 @@ string ContactTextFile::createLineOfData(Contact contact) {
 
 void ContactTextFile::appendContactToTextFile(Contact contact) {
 
-    
     contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
 
     if (contactsTextFile.good() == true) {
@@ -41,7 +39,6 @@ void ContactTextFile::appendContactToTextFile(Contact contact) {
     }
     else cout << "failed";
 }
-
 
 vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
                             
@@ -94,7 +91,6 @@ int ContactTextFile::getIDofLastContact() {
 
 void ContactTextFile::deleteContactFromTextfile(int deletionID) {
 
-
     contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
     
     if (!contactsTextFile.good()) {
@@ -124,7 +120,7 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
         }
         i = 0;
 
-        if (parts[0] != to_string(deletionID)) {  //parts[0] is the ID/ if doenst match, rewrite line // if entered id doesnt match 
+        if (parts[0] != to_string(deletionID)) {  //parts[0] is the ID/ if doenst match, rewrite line //
             for (int j = 0; j < 7; j++) {
                 contactsTextFile2 << parts[j] << "|";
             }
@@ -146,7 +142,6 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
     }
 
     cout << "Contact deleted successfully."; system("pause");
-
 }
 
 void ContactTextFile::editContactInTextFile(Contact contact) {
@@ -179,24 +174,18 @@ void ContactTextFile::editContactInTextFile(Contact contact) {
         }
         i = 0;
 
-        if (parts[0] != to_string(contact.getContactID()))            //// if doenst match, rewrite line 
+        if (parts[0] != to_string(contact.getContactID()))    //// if doenst match, rewrite line 
             contactsTextFile2 << line << endl;
 
         if (parts[0] == to_string(contact.getContactID())) {
 
-           // for (Contact& contact : contacts) {
-
-                //if (contact.id == ID) {
-
-                    contactsTextFile2 << contact.getContactID() << "|";
-                    contactsTextFile2 << contact.getUserIDofContact() << "|";
-                    contactsTextFile2 << contact.getContactName() << "|";
-                    contactsTextFile2 << contact.getContactSurname() << "|";
-                    contactsTextFile2 << contact.getContactPhone() << "|";
-                    contactsTextFile2 << contact.getContactEmail() << "|";
-                    contactsTextFile2 << contact.getContactAddress() << "|" << endl;
-                //}
-            //}
+            contactsTextFile2 << contact.getContactID() << "|";
+            contactsTextFile2 << contact.getUserIDofContact() << "|";
+            contactsTextFile2 << contact.getContactName() << "|";
+            contactsTextFile2 << contact.getContactSurname() << "|";
+            contactsTextFile2 << contact.getContactPhone() << "|";
+            contactsTextFile2 << contact.getContactEmail() << "|";
+            contactsTextFile2 << contact.getContactAddress() << "|" << endl;
         }
     }
     contactsTextFile.close();
@@ -212,7 +201,5 @@ void ContactTextFile::editContactInTextFile(Contact contact) {
     if (rename(temporaryFile.c_str(), destinationFile.c_str()) != 0) {
         cout << "Failed to rename temporary file after closing the file in edit function" << endl; system("pause");
     }
-
     cout << "Contact edited successfully."; system("pause");
-
 }

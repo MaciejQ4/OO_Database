@@ -51,7 +51,6 @@ bool UserManager::isUserLogged() {
 }
 
 void UserManager::loginUser() {
-
     
     cout << "Enter login" << endl;
     string login = OtherFunctions::readLine();
@@ -74,7 +73,6 @@ void UserManager::logOut() {
 
     loggedID = 0;
 }
-
 
 void UserManager::createUser() {
 

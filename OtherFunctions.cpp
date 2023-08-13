@@ -2,7 +2,7 @@
 
 string OtherFunctions::readLine() {
 
-    //cin.ignore();
+    //cin.ignore(); //sometimes usefull sometimes not
     string input = "";
     getline(cin, input);
     return input;
@@ -26,4 +26,12 @@ char OtherFunctions::readChar() {
     return character;
 }
 
+string OtherFunctions::uppercase(string word) {
 
+    if (!word.empty())
+    {
+        transform(word.begin(), word.end(), word.begin(), ::tolower);
+        word[0] = toupper(word[0]);
+    }
+    return word;
+}
