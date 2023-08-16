@@ -18,7 +18,7 @@ public:
 
 	static string readLine();
 	static char readChar();
-	static string uppercase(string word);
+	static string uppercase(string word); //makes first letter uppercase
 
 };
 

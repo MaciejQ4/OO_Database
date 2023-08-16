@@ -11,6 +11,7 @@ class UserManager
 	int loggedID = 0;
 	vector <User> users;
 	UsersTextFile usersTextFile;
+	
 	User gatherCredentialsOfNewUser();
 	int assignIDtoNewUser();
 	bool doesLoginExist(string login);

@@ -10,9 +10,9 @@ class ContactManager
 {
 	const int LOGGED_ID = 0;
 	vector<Contact> contacts;
-	Contact gatherCredentialsOfNewContact();
 	ContactTextFile contactsTextFile;
 
+	Contact gatherCredentialsOfNewContact();
 public:
 
 	ContactManager(string contactsTextFileName, int loggedID)

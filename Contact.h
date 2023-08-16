@@ -27,7 +27,7 @@ public:
 		this->email = email;
 		this->address = address;
 
-	}
+	}	
 	void setContactID(int newID);
 	void setUserIDofContact(int loggedID);
 	void setContactName(string newname);
