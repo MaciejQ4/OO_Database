@@ -13,10 +13,10 @@ bool UsersTextFile::isUserFileEmpty() {
 vector<User> UsersTextFile::uploadUsersFromTextFile() {
 
     vector<User> users;
-    usersTextFile.open(USERS_TEXTFILE_NAME, ios::in | ios::app);
+    usersTextFile.open(getFileName(), ios::in | ios::app);
 
     if (!usersTextFile.good()) {
-        cout << "failed"; exit(0);
+        cout << "Failed to open file for uploading users"; exit(0);
     }
 
     string line;
@@ -59,7 +59,7 @@ string UsersTextFile::createLineOfData(User user) {
 
 void UsersTextFile::appendUserToFile(User user) {
 
-    usersTextFile.open(USERS_TEXTFILE_NAME.c_str(), ios::in | ios::app);
+    usersTextFile.open(getFileName().c_str(), ios::in | ios::app);
 
     if (usersTextFile.good() == true) {
         string lineOfData = "";
@@ -70,7 +70,7 @@ void UsersTextFile::appendUserToFile(User user) {
         
         usersTextFile.close();
     }
-    else cout << "failed";
+    else cout << "Failed to append user to file"; system("pause");
 }
 
 
@@ -80,15 +80,15 @@ void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPas
     fstream tempFile(tempFileName, ios::out);
 
     if (!tempFile.good()) {
-        cout << "Failed to create temporary file" << endl;
+        cout << "Failed to create temporary file to change user password" << endl;
         system("pause");
         return;
     }
 
-    usersTextFile.open(USERS_TEXTFILE_NAME, ios::in);
+    usersTextFile.open(getFileName(), ios::in);
 
     if (!usersTextFile.good()) {
-        cout << "Failed to open file" << endl;
+        cout << "Failed to create temporary file to change user password" << endl;
         system("pause");
         return;
     }
@@ -120,8 +120,8 @@ void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPas
     tempFile.close();
 
     // Remove the original file
-    remove(USERS_TEXTFILE_NAME.c_str());
+    remove(getFileName().c_str());
     // Rename the temporary file to the original file name
-    rename(tempFileName.c_str(), USERS_TEXTFILE_NAME.c_str());
+    rename(tempFileName.c_str(), getFileName().c_str());
 
 }

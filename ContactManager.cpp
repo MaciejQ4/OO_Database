@@ -158,11 +158,6 @@ void ContactManager::editContact() {
     }                                                           
 }
 
-void ContactManager::clearVector() {
-
-    contacts.clear();   
-}
-
 void ContactManager::print(Contact contact) {
 
     cout << contact.getContactID() << "|";

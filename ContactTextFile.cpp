@@ -24,7 +24,7 @@ string ContactTextFile::createLineOfData(Contact contact) {
 
 void ContactTextFile::appendContactToTextFile(Contact contact) {
 
-    contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
+    contactsTextFile.open(getFileName().c_str(), ios::in | ios::app);
 
     if (contactsTextFile.good() == true) {
 
@@ -37,16 +37,16 @@ void ContactTextFile::appendContactToTextFile(Contact contact) {
         contactsTextFile.close();
         IDofLastContact++;
     }
-    else cout << "failed";
+    else cout << "Failed to append to textfile";
 }
 
 vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
                             
     vector<Contact> contacts;
-    contactsTextFile.open(contactsTextFileName, ios::in | ios::app);
+    contactsTextFile.open(getFileName(), ios::in | ios::app);
 
     if (!contactsTextFile.good()) {
-        cout << "failed"; exit(0);
+        cout << "Failed to upload contacts from file"; exit(0);
     }
 
     string line;
@@ -91,7 +91,7 @@ int ContactTextFile::getIDofLastContact() {
 
 void ContactTextFile::deleteContactFromTextfile(int deletionID) {
 
-    contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
+    contactsTextFile.open(getFileName().c_str(), ios::in | ios::app);
     
     if (!contactsTextFile.good()) {
         cout << "Failed to open textfile for deletion "; system("pause");
@@ -131,7 +131,7 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
     contactsTextFile2.close();
 
     string temporaryFile = "contacts2.txt";
-    string destinationFile = contactsTextFileName;
+    string destinationFile = getFileName();
     
     if (remove(destinationFile.c_str()) != 0) {
         cout << "Failed to delete contacts file after closing the file." << endl; system("pause");
@@ -146,7 +146,7 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
 
 void ContactTextFile::editContactInTextFile(Contact contact) {
 
-    contactsTextFile.open(contactsTextFileName.c_str(), ios::in | ios::app);
+    contactsTextFile.open(getFileName().c_str(), ios::in | ios::app);
 
     if (!contactsTextFile.good()) {
         cout << "Failed to open textfile for edition "; system("pause");
@@ -192,7 +192,7 @@ void ContactTextFile::editContactInTextFile(Contact contact) {
     contactsTextFile2.close();
 
     string temporaryFile = "contacts2.txt";
-    string destinationFile = contactsTextFileName;
+    string destinationFile = getFileName();
 
     if (remove(destinationFile.c_str()) != 0) {
         cout << "Failed to edit contact file after closing the file." << endl; system("pause");

@@ -7,14 +7,14 @@
 
 class UsersTextFile : public Textfile
 {
-	const string USERS_TEXTFILE_NAME;
+//	const string USERS_TEXTFILE_NAME;
 	fstream usersTextFile;
 
 	bool isUserFileEmpty();
 
 public:
 
-	UsersTextFile(string NAME_OF_TEXTFILE) : USERS_TEXTFILE_NAME(NAME_OF_TEXTFILE) {};
+	UsersTextFile(string nameOfTextFile) : Textfile(nameOfTextFile) {};
 
 	vector<User> uploadUsersFromTextFile();
 	string createLineOfData(User user);

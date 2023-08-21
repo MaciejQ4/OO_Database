@@ -9,14 +9,14 @@
 class ContactTextFile : public Textfile
 {
 	int IDofLastContact;
-	const string contactsTextFileName;
+
 	fstream contactsTextFile;
 	
 	bool isContactsTextFileEmpty();
 	string createLineOfData(Contact contact);
 
 public:
-	ContactTextFile(string NAME_OF_TEXTFILE) : contactsTextFileName(NAME_OF_TEXTFILE) {
+	ContactTextFile(string nameOfTextFile) : Textfile(nameOfTextFile) {
 		IDofLastContact = 0;
 	};
 

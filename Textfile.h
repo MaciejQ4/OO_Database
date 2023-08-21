@@ -9,6 +9,10 @@ using namespace std;
 class Textfile
 {
 	const string NAME_OF_TEXTFILE;
+
+protected:
+	Textfile(string nameOfTextFile) : NAME_OF_TEXTFILE (nameOfTextFile) {}
+
 	string getFileName();
 	bool isFileEmpty();
 };

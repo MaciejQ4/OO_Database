@@ -31,7 +31,6 @@ public:
 	void showAllContacts();
 	void deleteContact();
 	void editContact();
-	void clearVector();
 
 };
 
