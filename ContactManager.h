@@ -8,21 +8,13 @@
 
 class ContactManager
 {
-	const int LOGGED_ID = 0;
-	vector<Contact> contacts;
-	ContactTextFile contactsTextFile;
-
-	Contact gatherCredentialsOfNewContact();
 public:
 
 	ContactManager(string contactsTextFileName, int loggedID)
-	 : contactsTextFile (contactsTextFileName), LOGGED_ID(loggedID) 
-	{
-		contacts = contactsTextFile.uploadContactsFromTextFile(loggedID);
-	};
-	
-	void setLoggedID(int id);
-	int getLoggedID();
+		: contactsTextFile(contactsTextFileName), LOGGED_ID(loggedID)
+
+	{ contacts = contactsTextFile.uploadContactsFromTextFile(loggedID); };
+
 	void uploadContactsFromTextFile();
 	void createContact();
 	void print(Contact contact);
@@ -32,6 +24,14 @@ public:
 	void deleteContact();
 	void editContact();
 
+private:
+
+	const int LOGGED_ID;
+	vector<Contact> contacts;
+	ContactTextFile contactsTextFile;
+
+	Contact gatherCredentialsOfNewContact();
+	bool doesIDexist(int id);
 };
 
 #endif

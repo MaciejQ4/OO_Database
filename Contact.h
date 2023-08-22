@@ -28,6 +28,15 @@ public:
 		this->address = address;
 
 	}	
+	
+	int getContactID();
+	int getUserIDofContact();
+	string getContactName();
+	string getContactSurname();
+	string getContactPhone();
+	string getContactEmail();
+	string getContactAddress();
+
 	void setContactID(int newID);
 	void setUserIDofContact(int loggedID);
 	void setContactName(string newname);
@@ -36,13 +45,6 @@ public:
 	void setContactEmail(string newemail);
 	void setContactAddress(string newaddress);
 
-	int getContactID();
-	int getUserIDofContact();
-	string getContactName();
-	string getContactSurname();
-	string getContactPhone();
-	string getContactEmail();
-	string getContactAddress();
 };
 
 #endif

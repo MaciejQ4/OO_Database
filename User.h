@@ -14,20 +14,28 @@ using namespace std;
 
 class User
 {
-	int id;
-	string login;
-	string password;
-
 public:	
 
-	void setUserID(int newID);
-	void setUserLogin(string newlogin);
-	void setUserPassword(string newPassword);
+	User(int id = 0, string login = "", string password = "")
+	{
+		this->id = id;
+		this->login = login;
+		this->password = password;
+	}
 
 	int getUserID();
 	string getUserLogin();
 	string getUserPassword();
 
+	void setUserID(int newID);
+	void setUserLogin(string newlogin);
+	void setUserPassword(string newPassword);
+
+private:
+
+	int id;
+	string login;
+	string password;
 };
 
 #endif

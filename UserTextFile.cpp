@@ -1,22 +1,12 @@
 #include "UserTextFile.h"
 
-
-bool UsersTextFile::isUserFileEmpty() {
-
-    usersTextFile.seekg(0, ios::end);
-    if (usersTextFile.tellg() == 0)
-        return true;
-    else
-        return false;
-}
-
 vector<User> UsersTextFile::uploadUsersFromTextFile() {
 
     vector<User> users;
     usersTextFile.open(getFileName(), ios::in | ios::app);
 
     if (!usersTextFile.good()) {
-        cout << "Failed to open file for uploading users"; exit(0);
+        cout << "Failed to open file for uploading users. "; system("pause");
     }
 
     string line;
@@ -56,7 +46,6 @@ string UsersTextFile::createLineOfData(User user) {
     return line;
 }
 
-
 void UsersTextFile::appendUserToFile(User user) {
 
     usersTextFile.open(getFileName().c_str(), ios::in | ios::app);
@@ -70,9 +59,8 @@ void UsersTextFile::appendUserToFile(User user) {
         
         usersTextFile.close();
     }
-    else cout << "Failed to append user to file"; system("pause");
+    else cout << "Failed to append user to file. "; system("pause");
 }
-
 
 void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user) {
 
@@ -80,16 +68,14 @@ void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPas
     fstream tempFile(tempFileName, ios::out);
 
     if (!tempFile.good()) {
-        cout << "Failed to create temporary file to change user password" << endl;
-        system("pause");
+        cout << "Failed to create temporary file to change user password. "; system("pause");
         return;
     }
 
     usersTextFile.open(getFileName(), ios::in);
 
     if (!usersTextFile.good()) {
-        cout << "Failed to create temporary file to change user password" << endl;
-        system("pause");
+        cout << "Failed to create temporary file to change user password. "; system("pause");
         return;
     }
 
@@ -110,7 +96,7 @@ void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPas
         i = 0;
 
         if (parts[0] == to_string(loggedID)) {
-            // Update the password in the line
+            
             line = parts[0] + "|" + parts[1] + "|" + newPassword + "|";
         }
         tempFile << line << endl;
@@ -119,9 +105,19 @@ void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPas
     usersTextFile.close();
     tempFile.close();
 
-    // Remove the original file
     remove(getFileName().c_str());
-    // Rename the temporary file to the original file name
-    rename(tempFileName.c_str(), getFileName().c_str());
+  
+    if (rename(tempFileName.c_str(), getFileName().c_str()) != 0) {
+ 
+        cout << "Failed to rename temporary file to original filename. "; system("pause");
+    }
+}
 
+bool UsersTextFile::isUserFileEmpty() {
+
+    usersTextFile.seekg(0, ios::end);
+    if (usersTextFile.tellg() == 0)
+        return true;
+    else
+        return false;
 }

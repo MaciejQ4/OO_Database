@@ -6,25 +6,25 @@
 #include "Contact.h"
 #include "Textfile.h"
 
-class ContactTextFile : public Textfile
+class ContactTextFile : protected Textfile
 {
-	int IDofLastContact;
-
-	fstream contactsTextFile;
-	
-	bool isContactsTextFileEmpty();
-	string createLineOfData(Contact contact);
-
 public:
-	ContactTextFile(string nameOfTextFile) : Textfile(nameOfTextFile) {
+	ContactTextFile(string contactsTextFileName) : Textfile(contactsTextFileName) {
 		IDofLastContact = 0;
 	};
 
+	int getIDofLastContact();
 	void appendContactToTextFile(Contact contact);
 	vector<Contact> uploadContactsFromTextFile(int loggedID);
-	int getIDofLastContact();
 	void deleteContactFromTextfile(int deletionID);
 	void editContactInTextFile(Contact contact);
+
+private:
+
+	int IDofLastContact;
+	fstream contactsTextFile;
+
+	string createLineOfData(Contact contact);
 };
 
 #endif

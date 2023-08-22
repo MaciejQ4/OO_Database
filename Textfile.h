@@ -8,13 +8,16 @@ using namespace std;
 
 class Textfile
 {
-	const string NAME_OF_TEXTFILE;
-
 protected:
-	Textfile(string nameOfTextFile) : NAME_OF_TEXTFILE (nameOfTextFile) {}
+	
+	Textfile(string usersOrContactsTextFileName) : NAME_OF_TEXTFILE (usersOrContactsTextFileName) {}
 
 	string getFileName();
 	bool isFileEmpty();
+
+private:
+
+	const string NAME_OF_TEXTFILE;
 };
 
 #endif

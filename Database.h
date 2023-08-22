@@ -8,23 +8,16 @@
 
 class Database
 {
-	UserManager userManager;
-	ContactManager *contactManager;
-	const string NAME_OF_CONTACT_TEXTFILE;
-
 public:
 
-	Database(string userFileName, string contactsFileName):
-		userManager(userFileName), NAME_OF_CONTACT_TEXTFILE(contactsFileName)
-	{
-		contactManager = NULL;
-	};
+	Database(string usersTextFileName, string contactsTextFileName):
+		userManager(usersTextFileName), NAME_OF_CONTACT_TEXTFILE(contactsTextFileName)
+
+	{	contactManager = NULL; };
 
 	~Database()
-	{
-		delete contactManager;
-		contactManager = NULL;
-	}
+	{	delete contactManager;
+		contactManager = NULL; }
 
 	bool isUserLogged();
 	void createUser();
@@ -38,6 +31,12 @@ public:
 	void editContact();
 	void changePassword();
 	void logOut();
+
+private:
+
+	UserManager userManager;
+	ContactManager* contactManager;
+	const string NAME_OF_CONTACT_TEXTFILE;
 		
 };
 

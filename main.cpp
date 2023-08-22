@@ -9,31 +9,32 @@ using namespace std;
 int main()
 {
     Database database("users.txt", "contacts.txt");
-    char choice;
 
     while (true) {
         
         if (database.isUserLogged() == false) {
 
             system("cls");
-            cout << "Main menu"          << endl;
-            cout << "1. Create new user" << endl;;
+            cout << ">> DATABASE MAIN MENU <<"  << endl << endl;
+            cout << "1. Create new user" << endl;
             cout << "2. Login"           << endl;
             cout << "3. Show all users"  << endl;
             
-            choice = OtherFunctions::readChar();
+            char choice = OtherFunctions::readChar();
             switch (choice) {
             
             case '1': database.createUser();              break;
             case '2': database.loginUser();               break;
-            case '3': database.showAllUsers();            break; 
+            case '3': database.showAllUsers();            break;
+
+            default: cout << "Wrong input. "; system("pause");
             }
         }
-/////////////////////////////////////////////////////////////////////        
+////////////////////////////////////////////////////////////////       
         else {
    
             system("cls");
-            cout << " USER MENU "               << endl << endl;
+            cout << ">> USER MENU <<"               << endl << endl;
             cout << "1. Create a contact"               << endl;
             cout << "2. Search contacts by name"        << endl;
             cout << "3. Search contacts by surname"     << endl;
@@ -44,7 +45,7 @@ int main()
             cout << "8. Sign out"                       << endl;
             cout << "9. Exit"                           << endl;
             
-            choice = OtherFunctions::readChar();
+            char choice = OtherFunctions::readChar();
             switch (choice) {
 
             case '1': database.createContact();           break;
@@ -56,6 +57,8 @@ int main()
             case '7': database.changePassword();          break;
             case '8': database.logOut();                  break;
             case '9': exit(0);                            break;
+
+            default: cout << "Wrong input. "; system("pause");
             }
         }
     }

@@ -1,25 +1,8 @@
 #include "ContactTextFile.h"
 
-bool ContactTextFile::isContactsTextFileEmpty() {
+int ContactTextFile::getIDofLastContact() {
 
-    contactsTextFile.seekg(0, ios::end);
-    if (contactsTextFile.tellg() == 0)
-        return true;
-    else
-        return false;
-}
-
-string ContactTextFile::createLineOfData(Contact contact) {
-
-    string line = "";
-    line += to_string(contact.getContactID()) + "|";
-    line += to_string(contact.getUserIDofContact()) + "|";
-    line += contact.getContactName() + "|";
-    line += contact.getContactSurname() + "|";
-    line += contact.getContactPhone() + "|";
-    line += contact.getContactEmail() + "|";
-    line += contact.getContactAddress() + "|";
-    return line;
+    return IDofLastContact;
 }
 
 void ContactTextFile::appendContactToTextFile(Contact contact) {
@@ -31,13 +14,13 @@ void ContactTextFile::appendContactToTextFile(Contact contact) {
         string line = "";
         line = createLineOfData(contact);
         
-        if (isContactsTextFileEmpty()) contactsTextFile << line;
+        if (isFileEmpty()) contactsTextFile << line;
         else                           contactsTextFile << endl << line;
 
         contactsTextFile.close();
         IDofLastContact++;
     }
-    else cout << "Failed to append to textfile";
+    else cout << "Failed to append contact to textfile";
 }
 
 vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
@@ -83,11 +66,6 @@ vector<Contact> ContactTextFile::uploadContactsFromTextFile(int loggedID) {
     contactsTextFile.close();
     return contacts;
 } 
-
-int ContactTextFile::getIDofLastContact() {
-
-    return IDofLastContact;
-}
 
 void ContactTextFile::deleteContactFromTextfile(int deletionID) {
 
@@ -140,8 +118,6 @@ void ContactTextFile::deleteContactFromTextfile(int deletionID) {
     if (rename(temporaryFile.c_str(), destinationFile.c_str()) != 0) {
         cout << "Failed to rename temporary file after closing the file." << endl; system("pause");
     }
-
-    cout << "Contact deleted successfully."; system("pause");
 }
 
 void ContactTextFile::editContactInTextFile(Contact contact) {
@@ -195,11 +171,24 @@ void ContactTextFile::editContactInTextFile(Contact contact) {
     string destinationFile = getFileName();
 
     if (remove(destinationFile.c_str()) != 0) {
-        cout << "Failed to edit contact file after closing the file." << endl; system("pause");
+        cout << "Failed to edit contact file after closing the file. "; system("pause");
     }
 
     if (rename(temporaryFile.c_str(), destinationFile.c_str()) != 0) {
-        cout << "Failed to rename temporary file after closing the file in edit function" << endl; system("pause");
+        cout << "Failed to rename temporary file after closing the file in edit function. "; system("pause");
     }
-    cout << "Contact edited successfully."; system("pause");
+    cout << "Contact edited successfully. "; system("pause");
+}
+
+string ContactTextFile::createLineOfData(Contact contact) {
+
+    string line = "";
+    line += to_string(contact.getContactID()) + "|";
+    line += to_string(contact.getUserIDofContact()) + "|";
+    line += contact.getContactName() + "|";
+    line += contact.getContactSurname() + "|";
+    line += contact.getContactPhone() + "|";
+    line += contact.getContactEmail() + "|";
+    line += contact.getContactAddress() + "|";
+    return line;
 }
