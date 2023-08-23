@@ -1,10 +1,5 @@
 #include "ContactManager.h"
 
-void ContactManager::uploadContactsFromTextFile() {
-
-    contacts = contactsTextFile.uploadContactsFromTextFile(LOGGED_ID);
-}
-
 void ContactManager::createContact() {
 
     system("cls");

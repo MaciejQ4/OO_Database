@@ -8,6 +8,13 @@
 
 class ContactTextFile : protected Textfile
 {
+private:
+
+	int IDofLastContact;
+	fstream contactsTextFile;
+
+	string createLineOfData(Contact contact);
+
 public:
 	ContactTextFile(string contactsTextFileName) : Textfile(contactsTextFileName) {
 		IDofLastContact = 0;
@@ -18,13 +25,6 @@ public:
 	vector<Contact> uploadContactsFromTextFile(int loggedID);
 	void deleteContactFromTextfile(int deletionID);
 	void editContactInTextFile(Contact contact);
-
-private:
-
-	int IDofLastContact;
-	fstream contactsTextFile;
-
-	string createLineOfData(Contact contact);
 };
 
 #endif

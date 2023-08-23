@@ -6,6 +6,12 @@
 
 class UsersTextFile : protected Textfile
 {
+private:
+
+	fstream usersTextFile;
+
+	bool isUserFileEmpty();
+
 public:
 
 	UsersTextFile(string usersTextFileName) : Textfile(usersTextFileName) {};
@@ -14,12 +20,6 @@ public:
 	string createLineOfData(User user);
 	void appendUserToFile(User user);
 	void replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user);
-
-private:
-
-	fstream usersTextFile;
-
-	bool isUserFileEmpty();
 };
 
 #endif

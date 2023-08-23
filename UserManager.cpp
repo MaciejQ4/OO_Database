@@ -19,9 +19,10 @@ bool UserManager::isUserLogged() {
 
 void UserManager::loginUser() {
     
-    cout << "Enter login" << endl;
+    system("cls");
+    cout << "Enter Login:" << endl;
     string login = OtherFunctions::readLine();
-    cout << "Enter password" << endl;
+    cout << "Enter Password:" << endl;
     string password = OtherFunctions::readLine();
 
     for (size_t i = 0; i < users.size(); i++) {
@@ -38,14 +39,11 @@ void UserManager::loginUser() {
 
 void UserManager::createUser() {
 
+    system("cls");
     User user = gatherCredentialsOfNewUser();
     users.push_back(user);
-
     usersTextFile.appendUserToFile(user);
-
-    cout << "User added succesfully" << endl;
-    system("pause");
-
+    cout << "User added succesfully. "; system("pause");
 }
 
 void UserManager::showAllUsers() {
@@ -55,7 +53,7 @@ void UserManager::showAllUsers() {
     else {
         system("cls");
         cout << "Active users accounts: " << endl << endl;
-        for (int i = 0; i < users.size(); i++) {
+        for (size_t i = 0; i < users.size(); i++) {
             cout << users[i].getUserID() << "|";
             cout << users[i].getUserLogin() << "|";
             cout << users[i].getUserPassword() << "|" << endl;
@@ -67,7 +65,7 @@ void UserManager::showAllUsers() {
 void UserManager::changePassword() {
 
     system("cls");
-    cout << "Enter new password" << endl;
+    cout << "Enter new password: " << endl;
     string newPassword  = OtherFunctions::readLine();
   
     for (User& user: users) {
@@ -91,11 +89,11 @@ User UserManager::gatherCredentialsOfNewUser() {
     User user;
     user.setUserID(assignIDtoNewUser());
 
-    cout << "Enter login: " << endl;
+    cout << "Enter Login: " << endl;
     string login = OtherFunctions::readLine();
     user.setUserLogin(login);
 
-    cout << "Enter password: " << endl;
+    cout << "Enter Password: " << endl;
     string password = OtherFunctions::readLine();
     user.setUserPassword(password);
 

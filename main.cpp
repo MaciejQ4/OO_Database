@@ -16,9 +16,10 @@ int main()
 
             system("cls");
             cout << ">> DATABASE MAIN MENU <<"  << endl << endl;
-            cout << "1. Create new user" << endl;
+            cout << "1. Create new User" << endl;
             cout << "2. Login"           << endl;
-            cout << "3. Show all users"  << endl;
+            cout << "3. Show all Users"  << endl;
+            cout << "9. Close Database" << endl;
             
             char choice = OtherFunctions::readChar();
             switch (choice) {
@@ -26,6 +27,7 @@ int main()
             case '1': database.createUser();              break;
             case '2': database.loginUser();               break;
             case '3': database.showAllUsers();            break;
+            case '4': exit(0);            break;
 
             default: cout << "Wrong input. "; system("pause");
             }
@@ -34,7 +36,7 @@ int main()
         else {
    
             system("cls");
-            cout << ">> USER MENU <<"               << endl << endl;
+            cout << ">> USER MENU <<"           << endl << endl;
             cout << "1. Create a contact"               << endl;
             cout << "2. Search contacts by name"        << endl;
             cout << "3. Search contacts by surname"     << endl;

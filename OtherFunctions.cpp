@@ -10,20 +10,22 @@ string OtherFunctions::readLine() {
 
 char OtherFunctions::readChar() {
 
-    string input = "";
     char character = { 0 };
 
     while (true)
     {
-        getline(cin, input);
+        string input = OtherFunctions::readLine();
+        
+        if (input.length() == 1){
 
-        if (input.length() == 1)
-        {
             character = input[0];
-            break;
+            return character;
         }
-    } 
-    return character;
+        else {
+            character = 'x';
+            return character;
+        }
+    }   
 }
 
 string OtherFunctions::uppercase(string word) {

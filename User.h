@@ -14,6 +14,12 @@ using namespace std;
 
 class User
 {
+private:
+
+	int id;
+	string login;
+	string password;
+
 public:	
 
 	User(int id = 0, string login = "", string password = "")
@@ -30,12 +36,6 @@ public:
 	void setUserID(int newID);
 	void setUserLogin(string newlogin);
 	void setUserPassword(string newPassword);
-
-private:
-
-	int id;
-	string login;
-	string password;
 };
 
 #endif

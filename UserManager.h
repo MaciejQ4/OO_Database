@@ -8,6 +8,17 @@
 
 class UserManager
 {
+private:
+
+	int loggedID = 0;
+
+	vector <User> users;
+	UsersTextFile usersTextFile;
+
+	User gatherCredentialsOfNewUser();
+	int assignIDtoNewUser();
+	bool doesLoginExist(string login);
+
 public:
 
 	UserManager(string usersTextFileName) : usersTextFile (usersTextFileName) 
@@ -23,17 +34,6 @@ public:
 
 	void changePassword();
 	void logOut();
-
-private:
-
-	int loggedID = 0;
-	
-	vector <User> users;
-	UsersTextFile usersTextFile;
-
-	User gatherCredentialsOfNewUser();
-	int assignIDtoNewUser();
-	bool doesLoginExist(string login);
 };
 
 #endif

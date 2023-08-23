@@ -8,6 +8,12 @@
 
 class Database
 {
+private:
+
+	UserManager userManager;
+	ContactManager* contactManager;
+	const string NAME_OF_CONTACT_TEXTFILE;
+
 public:
 
 	Database(string usersTextFileName, string contactsTextFileName):
@@ -31,13 +37,6 @@ public:
 	void editContact();
 	void changePassword();
 	void logOut();
-
-private:
-
-	UserManager userManager;
-	ContactManager* contactManager;
-	const string NAME_OF_CONTACT_TEXTFILE;
-		
 };
 
 #endif

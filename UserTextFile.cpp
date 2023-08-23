@@ -59,7 +59,7 @@ void UsersTextFile::appendUserToFile(User user) {
         
         usersTextFile.close();
     }
-    else cout << "Failed to append user to file. "; system("pause");
+    else { cout << "Failed to append user to file. "; system("pause"); }
 }
 
 void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPassword, User user) {

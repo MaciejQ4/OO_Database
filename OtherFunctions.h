@@ -13,13 +13,11 @@ using namespace std;
 
 class OtherFunctions
 {
-
 public:
 
 	static string readLine();
 	static char readChar();
 	static string uppercase(string word); //makes first letter uppercase
-
 };
 
 #endif
