@@ -10,8 +10,6 @@ private:
 
 	fstream usersTextFile;
 
-	bool isUserFileEmpty();
-
 public:
 
 	UsersTextFile(string usersTextFileName) : Textfile(usersTextFileName) {};

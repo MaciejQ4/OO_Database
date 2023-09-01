@@ -54,7 +54,7 @@ void UsersTextFile::appendUserToFile(User user) {
         string lineOfData = "";
         lineOfData = createLineOfData(user);
 
-        if (isUserFileEmpty()) usersTextFile << lineOfData;
+        if (isFileEmpty())     usersTextFile << lineOfData;
         else                   usersTextFile << endl << lineOfData;
         
         usersTextFile.close();
@@ -111,13 +111,4 @@ void UsersTextFile::replaceChangedPasswordInTextFile(int loggedID, string newPas
  
         cout << "Failed to rename temporary file to original filename. "; system("pause");
     }
-}
-
-bool UsersTextFile::isUserFileEmpty() {
-
-    usersTextFile.seekg(0, ios::end);
-    if (usersTextFile.tellg() == 0)
-        return true;
-    else
-        return false;
 }

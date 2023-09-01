@@ -86,11 +86,21 @@ void UserManager::logOut() {
 
 User UserManager::gatherCredentialsOfNewUser() {
 
+    string login = "";
+    bool flag = true;
+    do {
+        system("cls");
+        cout << "Enter Login: " << endl;
+        login = OtherFunctions::readLine();
+        if (doesLoginExist(login)) {
+            cout << "Login already exists. Please choose a diffrent login. "; system("pause");
+        }
+        else flag = false;
+
+    } while (flag);
+
     User user;
     user.setUserID(assignIDtoNewUser());
-
-    cout << "Enter Login: " << endl;
-    string login = OtherFunctions::readLine();
     user.setUserLogin(login);
 
     cout << "Enter Password: " << endl;
@@ -111,7 +121,7 @@ int UserManager::assignIDtoNewUser() {
 bool UserManager::doesLoginExist(string login) {
 
     for (int i = 0; i < users.size(); i++) {
-        if (users[i].getUserLogin() == login)
+       if (users[i].getUserLogin() == login)
             return true;
     }
     return false;
