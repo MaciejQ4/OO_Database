@@ -54,8 +54,8 @@ void UsersTextFile::appendUserToFile(User user) {
         string lineOfData = "";
         lineOfData = createLineOfData(user);
 
-        if (isFileEmpty())     usersTextFile << lineOfData;
-        else                   usersTextFile << endl << lineOfData;
+        if (isFileEmpty()) usersTextFile << lineOfData;
+        else               usersTextFile << endl << lineOfData;
         
         usersTextFile.close();
     }

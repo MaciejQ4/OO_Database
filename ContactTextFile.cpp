@@ -15,7 +15,7 @@ void ContactTextFile::appendContactToTextFile(Contact contact) {
         line = createLineOfData(contact);
         
         if (isFileEmpty()) contactsTextFile << line;
-        else                           contactsTextFile << endl << line;
+        else               contactsTextFile << endl << line;
 
         contactsTextFile.close();
         IDofLastContact++;
