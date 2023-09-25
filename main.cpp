@@ -15,11 +15,12 @@ int main()
         if (database.isUserLogged() == false) {
 
             system("cls");
-            cout << ">> DATABASE MAIN MENU <<"  << endl << endl;
-            cout << "1. Create new User"        << endl;
-            cout << "2. Login"                  << endl;
-            cout << "3. Show all Users"         << endl;
-            cout << "9. Close Database"         << endl;
+            cout << ">> DATABASE MAIN MENU <<"  << endl << endl << endl;
+            cout << "1. Create new User"                        << endl;
+            cout << "2. Login"                          << endl << endl;
+            cout << "------------------------"          << endl << endl;
+            cout << "3. Show all Users"                         << endl;
+            cout << "9. Close Database"                         << endl;
             
             char choice = OtherFunctions::readChar();
             switch (choice) {
@@ -36,16 +37,17 @@ int main()
         else {
    
             system("cls");
-            cout << ">> USER MENU <<"           << endl << endl;
-            cout << "1. Create a contact"               << endl;
-            cout << "2. Search contacts by name"        << endl;
-            cout << "3. Search contacts by surname"     << endl;
-            cout << "4. Show all contacts in database"  << endl;
-            cout << "5. Delete a contact"               << endl;
-            cout << "6. Edit a contact"                 << endl;
-            cout << "7. Change password"                << endl;
-            cout << "8. Sign out"                       << endl;
-            cout << "9. Exit"                           << endl;
+            cout << ">> USER MENU <<"           << endl << endl << endl;
+            cout << "1. Create a contact"                       << endl;
+            cout << "2. Search contacts by name"                << endl;
+            cout << "3. Search contacts by surname"             << endl;
+            cout << "4. Show all contacts in database"          << endl;
+            cout << "5. Delete a contact"                       << endl;
+            cout << "6. Edit a contact"                 << endl << endl;
+            cout << "--------------------------------"  << endl << endl;
+            cout << "7. Change password"                        << endl;
+            cout << "8. Sign out"                               << endl;
+            cout << "9. Exit"                                   << endl;
             
             char choice = OtherFunctions::readChar();
             switch (choice) {
