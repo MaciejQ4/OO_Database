@@ -14,7 +14,7 @@ void Database::loginUser() {
 
 	userManager.loginUser();
 	if (userManager.isUserLogged()) {
-		contactManager = new ContactManager(NAME_OF_CONTACT_TEXTFILE, userManager.getLoggedID());
+		peopleManager = new PeopleManager(NAME_OF_PEOPLE_TEXTFILE, userManager.getLoggedID());
 	}
 }
 
@@ -23,34 +23,34 @@ void Database::showAllUsers() {
 	userManager.showAllUsers();
 }
 
-void Database::createContact() {
+void Database::addPerson() {
 
-	contactManager->createContact();
+	peopleManager->addPerson();
 }
 
 void Database::searchAndShowByName() {
 
-	contactManager->searchAndShowByName();
+	peopleManager->searchAndShowByName();
 }
 
 void Database::searchAndShowBySurname() {
 
-	contactManager->searchAndShowBySurname();
+	peopleManager->searchAndShowBySurname();
 }
 
-void Database::showAllContacts() {
+void Database::showAllPeople() {
 
-	contactManager->showAllContacts();
+	peopleManager->showAllPeople();
 }
 
-void Database::deleteContact() {
+void Database::deletePerson() {
 
-	contactManager->deleteContact();
+	peopleManager->deletePerson();
 }
 
-void Database::editContact() {
+void Database::editPerson() {
 
-	contactManager->editContact();
+	peopleManager->editPerson();
 }
 
 void Database::changePassword() {
@@ -61,6 +61,6 @@ void Database::changePassword() {
 void Database::logOut() {
 
 	userManager.logOut();
-	delete contactManager;
-	contactManager = NULL;
+	delete peopleManager;
+	peopleManager = NULL;
 }

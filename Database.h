@@ -4,37 +4,43 @@
 #define DATABASE_H
 
 #include "UserManager.h"
-#include "ContactManager.h"
+#include "PeopleManager.h"
 
 class Database
 {
 private:
 
 	UserManager userManager;
-	ContactManager* contactManager;
-	const string NAME_OF_CONTACT_TEXTFILE;
+	PeopleManager* peopleManager;
+	const string NAME_OF_PEOPLE_TEXTFILE;
 
 public:
 
-	Database(string usersTextFileName, string contactsTextFileName):
-		userManager(usersTextFileName), NAME_OF_CONTACT_TEXTFILE(contactsTextFileName)
+	Database(string usersTextFileName, string peopleTextFileName):
+		userManager(usersTextFileName), NAME_OF_PEOPLE_TEXTFILE(peopleTextFileName)
 
-	{	contactManager = NULL; };
+	{	
+		peopleManager = NULL;
+	};
 
 	~Database()
-	{	delete contactManager;
-		contactManager = NULL; }
+	{	
+		delete peopleManager;
+		peopleManager = NULL;
+	}
 
 	bool isUserLogged();
 	void createUser();
 	void loginUser();
 	void showAllUsers();
-	void createContact();
+
+	void addPerson();
 	void searchAndShowByName();
 	void searchAndShowBySurname();
-	void showAllContacts();
-	void deleteContact();
-	void editContact();
+	void showAllPeople();
+	void deletePerson();
+	void editPerson();
+
 	void changePassword();
 	void logOut();
 };

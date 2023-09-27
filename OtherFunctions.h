@@ -8,7 +8,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
-#include "Contact.h"
+#include "Person.h"
 using namespace std;
 
 class OtherFunctions

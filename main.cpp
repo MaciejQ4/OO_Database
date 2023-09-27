@@ -4,11 +4,12 @@
 #include "Database.h"
 #include "OtherFunctions.h"
 #include <iostream>
+
 using namespace std;
 
 int main()
 {
-    Database database("users.txt", "contacts.txt");
+    Database database("users.txt", "people.txt");
 
     while (true) {
         
@@ -30,39 +31,41 @@ int main()
             case '3': database.showAllUsers();            break;
             case '4': exit(0);                            break;
 
-            default: cout << "Wrong input. "; system("pause");
+            default: cout << "Wrong input. ";
+                     system("pause");
             }
         }
-////////////////////////////////////////////////////////////////       
+//----------------------------------------------------------------------      
         else {
    
             system("cls");
             cout << ">> USER MENU <<"           << endl << endl << endl;
-            cout << "1. Create a contact"                       << endl;
-            cout << "2. Search contacts by name"                << endl;
-            cout << "3. Search contacts by surname"             << endl;
-            cout << "4. Show all contacts in database"          << endl;
-            cout << "5. Delete a contact"                       << endl;
-            cout << "6. Edit a contact"                 << endl << endl;
+            cout << "1. Add a person"                           << endl;
+            cout << "2. Search database by name"                << endl;
+            cout << "3. Search database by surname"             << endl;
+            cout << "4. Show all people in database"            << endl;
+            cout << "5. Delete a person from the database"      << endl;
+            cout << "6. Edit persons credenatials"      << endl << endl;
             cout << "--------------------------------"  << endl << endl;
-            cout << "7. Change password"                        << endl;
+            cout << "7. Change account password"                << endl;
             cout << "8. Sign out"                               << endl;
             cout << "9. Exit"                                   << endl;
             
             char choice = OtherFunctions::readChar();
             switch (choice) {
 
-            case '1': database.createContact();           break;
+            case '1': database.addPerson();               break;
             case '2': database.searchAndShowByName();     break;
             case '3': database.searchAndShowBySurname();  break;
-            case '4': database.showAllContacts();         break;
-            case '5': database.deleteContact();           break;
-            case '6': database.editContact();             break;
+            case '4': database.showAllPeople();           break;
+            case '5': database.deletePerson();            break;
+            case '6': database.editPerson();              break;
             case '7': database.changePassword();          break;
             case '8': database.logOut();                  break;
             case '9': exit(0);                            break;
 
-            default: cout << "Wrong input. "; system("pause");
+            default: cout << "Wrong input. ";
+                     system("pause");
             }
         }
     }
