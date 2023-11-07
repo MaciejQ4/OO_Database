@@ -22,7 +22,9 @@ private:
 public:
 
 	UserManager(string usersTextFileName) : usersTextFile (usersTextFileName) 
-	{ users = usersTextFile.uploadUsersFromTextFile(); };
+	{ 
+		users = usersTextFile.uploadUsersFromTextFile();
+	};
 
 	int getLoggedID();
 	void setLoggedID(int id);

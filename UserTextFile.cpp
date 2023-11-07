@@ -6,7 +6,8 @@ vector<User> UsersTextFile::uploadUsersFromTextFile() {
     usersTextFile.open(getFileName(), ios::in | ios::app);
 
     if (!usersTextFile.good()) {
-        cout << "Failed to open file for uploading users. "; system("pause");
+        cout << "Failed to open file for uploading users. ";
+        system("pause");
     }
 
     string line;

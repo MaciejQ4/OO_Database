@@ -29,7 +29,7 @@ int main()
             case '1': database.createUser();              break;
             case '2': database.loginUser();               break;
             case '3': database.showAllUsers();            break;
-            case '4': exit(0);                            break;
+            case '9': exit(0);                            break;
 
             default: cout << "Wrong input. ";
                      system("pause");
@@ -45,7 +45,7 @@ int main()
             cout << "3. Search database by surname"             << endl;
             cout << "4. Show all people in database"            << endl;
             cout << "5. Delete a person from the database"      << endl;
-            cout << "6. Edit persons credenatials"      << endl << endl;
+            cout << "6. Edit persons credentials"       << endl << endl;
             cout << "--------------------------------"  << endl << endl;
             cout << "7. Change account password"                << endl;
             cout << "8. Sign out"                               << endl;
